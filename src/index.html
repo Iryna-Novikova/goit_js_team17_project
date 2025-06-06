@@ -4,16 +4,31 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <meta name="description" content="ArtistsHub" />
+    <title>ArtistsHub</title>
+
+    <!--нормалізатор-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+    />
+
+    <!--підключення стилів-->
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
+
   <body>
-    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
+    <load src="./partials/header.html" />
+    <load src="./partials/burger_menu.html" />
 
     <main>
       <!-- Loads the specified .html file -->
-      <load src="./partials/vite-promo.html" />
-      <load src="./partials/badges.html" />
+      <load src="./partials/hero.html" />
+      <load src="./partials/artists.html" />
+      <load src="./partials/artist_modal.html" />
+      <load src="./partials/about_us.html" />
+      <load src="./partials/feedback.html" />
+      <load src="./partials/feedback_submit.html" />
     </main>
 
     <load src="./partials/footer.html" />
