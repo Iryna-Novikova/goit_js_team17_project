@@ -1,6 +1,6 @@
-.header {
-  padding: 20px 0;
-}
+/* .header {
+  padding: 7px 0;
+} */
 .nav {
   display: flex;
   justify-content: space-between;
@@ -41,4 +41,141 @@
 }
 .nav-link.active::after {
   background: #747bff;
+}
+
+.test {
+  color: red;
+}
+
+.container {
+  max-width: 320px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 20px;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon use,
+.logo-text use {
+  fill: #a259ff; /* Фіолетовий колір */
+}
+
+.burger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  fill: white;
+}
+
+.header-list {
+  display: none;
+}
+.header-list li:hover {
+  color: #a259ff;
+}
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* темний фон */
+  z-index: 999;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  visibility: hidden;
+}
+.is-shown {
+  visibility: visible;
+}
+.mobile-menu-container {
+  width: 100%;
+  height: 100%;
+  background-color: #0d0b0b; /* темний фон блоку */
+  padding: 7px 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.mobile-menu-close {
+  background: transparent;
+  border: none;
+  align-self: flex-end;
+  padding: 0;
+  cursor: pointer;
+}
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 60px;
+}
+.mobile-nav-links a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: left;
+  transition: color 0.3s ease;
+  margin: 0 auto;
+}
+.mobile-nav-links a:hover {
+  color: #a259ff;
+}
+.modal-nav {
+  display: flex;
+  align-items: center;
+}
+.logo-link {
+  flex: 1;
+}
+.modal-close {
+  fill: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.modal-close:active {
+  transform: scale(0.9);
+  opacity: 0.8;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1440px) {
+  .container {
+    max-width: 768px;
+    padding: 7px 64px;
+  }
+  .burger-btn {
+    display: none;
+  }
+  .header-list {
+    display: flex;
+    gap: 32px;
+  }
+  .header-logo {
+    fill: blue;
+  }
+  .logo-icon use {
+    fill: white;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding: 7px 64px;
+  }
+  .burger-btn {
+    display: none;
+  }
+  .header-list {
+    display: flex;
+    gap: 32px;
+  }
+  .logo-icon use {
+    fill: white;
+  }
 }
