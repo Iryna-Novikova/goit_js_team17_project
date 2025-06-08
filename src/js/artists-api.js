@@ -1,53 +1,56 @@
 // ТУт мають бути усі запити на сервер.
 import axios from 'axios';
 
-async function getArtists(page = 1, limit = 8) {
-  const baseURL = 'https://sound-wave.b.goit.study/api';
+axios.defaults.baseURL = 'https://sound-wave.b.goit.study/api';
+
+export async function getArtists(page = 1, limit = 8) {
   const endPoint = '/artists';
-  const url = baseURL + endPoint;
 
   const params = {
     limit,
     page,
   };
 
-  try {
-    const res = await axios.get(url, { params });
-    return res.data.artists;
-  } catch (error) {
-    console.error('Failed to fetch artists:', error);
-    return [];
-  }
+  const res = await axios.get(endPoint, { params });
+  return res.data;
 }
 
-async function getArtistCard(id) {
-  const baseURL = 'https://sound-wave.b.goit.study/api';
+export async function getArtistCard(id) {
   const endPoint = `/artists/${id}`;
-  const url = baseURL + endPoint;
 
   const params = {
     id,
   };
 
-  const res = await axios.get(url, { params });
+  const res = await axios.get(endPoint, { params });
   return res.data;
 }
 
-async function getFeedback(page = 1, limit = 1) {
-  const baseURL = 'https://sound-wave.b.goit.study/api';
+export async function getFeedback(page = 1, limit = 1) {
   const endPoint = '/feedbacks';
-  const url = baseURL + endPoint;
 
   const params = {
     page,
     limit,
   };
 
-  try {
-    const res = await axios.get(url, { params });
-    return res.data;
-  } catch (error) {
-    console.error('Failed to fetch feedbacks:', error);
-    return { data: [], total: 0, page, limit };
-  }
+  const res = await axios.get(endPoint, { params });
+  return res.data;
+}
+
+export async function postFeedback({ name, rating, descr }) {
+  const endPoint = '/feedbacks';
+
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+
+  const body = {
+    name,
+    rating,
+    descr,
+  };
+
+  const res = await axios.post(endPoint, body, { headers });
+  return res.data;
 }
