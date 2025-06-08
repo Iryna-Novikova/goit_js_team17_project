@@ -1,3 +1,4 @@
+// тут мають бути фннкції по розмітці карток артистів для секції артисти. 
 import { refs } from './refer.js';
 
 export function createArtistCard(artist) {
