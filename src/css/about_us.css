@@ -12,45 +12,50 @@
   gap: 20px;
 }
 
-.about-text h2 {
+.about-us-title {
   font-size: 44px;
-  line-height: 1.2;
-  white-space: normal;
-  letter-spacing: -0.01em;
-  margin: 0;
 }
 .mobile-break {
   display: none;
 }
 .about-us-logo {
   fill: #fff;
+  width: 64px;
+  height: 64px;
 }
+
 @media (max-width: 767px) {
   .mobile-break {
     display: inline;
   }
+  .about-us-logo {
+    width: 80px;
+    height: 80px;
+  }
+  .about-content {
+    gap: 24px;
+  }
 }
+
 .about-text p {
   font-size: 18px;
   line-height: 1.5;
   margin: 0;
 }
-
-.about-text .logo {
-  margin-bottom: 20px;
-}
-
 @media (min-width: 1440px) {
   .about-content {
     flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 32px;
+    /* justify-content: space-between;  Можете залишити, якщо потрібен простір між елементами. */
+    /* Якщо хочете, щоб фото було зліва, а текст справа, і прибрати space-between, то можна використати: */
+    /* justify-content: flex-start; */
+    gap: 0;
+    align-items: center; /* Це відцентрує вміст по вертикалі */
   }
 
   .about-image {
     flex: 1;
     max-width: 640px;
+    padding-right: 32px;
   }
 
   .about-text {
@@ -59,12 +64,8 @@
     color: #ffffff;
   }
 
-  .about-text h2 {
+  .about-us-title {
     font-size: 60px;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin-bottom: 24px;
   }
 
   .about-text p {

@@ -7,8 +7,8 @@
           <source
             media="(min-width: 1440px)"
             srcset="
-              ./img/about-us/about-us-desk-min.png    1x,
-              ./img/about-us/about-us-desk@2x-min.png 2x
+              /img/about-us/about-us-desk-min.png    1x,
+              /img/about-us/about-us-desk@2x-min.png 2x
             "
           />
 
@@ -16,8 +16,8 @@
           <source
             media="(min-width: 768px)"
             srcset="
-              ./img/about-us/about-us-tab-min.png    1x,
-              ./img/about-us/about-us-tab@2x-min.png 2x
+              /img/about-us/about-us-tab-min.png    1x,
+              /img/about-us/about-us-tab@2x-min.png 2x
             "
           />
 
@@ -25,14 +25,14 @@
           <source
             media="(max-width: 767px)"
             srcset="
-              ./img/about-us/about-us-mob-min.png    1x,
-              ./img/about-us/about-us-mob@2x-min.png 2x
+              /img/about-us/about-us-mob-min.png    1x,
+              /img/about-us/about-us-mob@2x-min.png 2x
             "
           />
 
           <!-- Fallback image -->
           <img
-            src="./img/about-us/about-us-mob-min.png"
+            src="/img/about-us/about-us-tab-min.png"
             width="640"
             height="665"
             alt="About Us section image"
@@ -44,13 +44,15 @@
       <div class="about-text">
         <div class="logo">
           <a href="">
-            <svg class="about-us-logo" width="80" height="80">
+            <svg class="about-us-logo">
               <use href="/img/icons.svg#icon-logo"></use>
             </svg>
           </a>
         </div>
 
-        <h2>About <br class="mobile-break" />ArtistsHub</h2>
+        <h2 class="epilogue" class="about-us-title">
+          About <br class="mobile-break" />ArtistsHub
+        </h2>
         <p>
           At ArtistsHub, our mission is to connect music lovers with the artists
           they adore. We strive to create a vibrant community where discovering
