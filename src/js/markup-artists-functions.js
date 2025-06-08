@@ -10,24 +10,24 @@ export function createArtistCard(artist) {
   } = artist;
 
   const genresMarkup =
-    `<ul class="artist-genres-list">` +
-    genres.map(genre => `<li class="artist-genre-item">${genre}</li>`).join('') +
+    `<ul class="artists-genres-list">` +
+    genres.map(genre => `<li class="artists-genre-item">${genre}</li>`).join('') +
     `</ul>`;
 
   return `
-    <li class="artist-card" data-id="${id}">
+    <li class="artists-card" data-id="${id}">
       <img src="${photo}" alt="${name}" class="artist-photo" />
-      <h4 class="artist-name epilogue">${name}</h4>
+      <h4 class="artists-name epilogue">${name}</h4>
       ${genresMarkup}
-      <p class="artist-description">
+      <p class="artists-description">
         ${shortDescription ? shortDescription.slice(0, 90) + '...' : 'No description available.'}
       </p>
-      <div class="learn-more-container" data-id="${id}">
+      <button class="learn-btn" data-id="${id}" type="button">
         <span class="learn-more-text">Learn More</span>
         <svg class="learn-more-icon" viewBox="0 0 31 32">
-          <use href="../img/icons.svg#icon-right-caret-learn-more"></use>
+          <use href="./img/icons.svg#icon-right-caret-learn-more"></use>
         </svg>
-      </div>
+      </button>
     </li>
   `;
 }
