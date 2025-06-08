@@ -23,7 +23,7 @@ export function createArtistCard(artist) {
       <p class="artists-description">
         ${shortDescription ? shortDescription.slice(0, 90) + '...' : 'No description available.'}
       </p>
-      <button class="learn-btn" data-id="${id}" type="button">
+      <button class="learn-more-btn" data-id="${id}" type="button">
         <span class="learn-more-text">Learn More</span>
         <svg class="learn-more-icon" viewBox="0 0 31 32">
           <use href="./img/icons.svg#icon-right-caret-learn-more"></use>
