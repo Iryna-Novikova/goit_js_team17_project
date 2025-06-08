@@ -25,7 +25,7 @@ function getArtistCard(artist) {
       </p>
       <button class="learn-more-btn" data-id="${id}" type="button">
         <span class="learn-more-text">Learn More</span>
-        <svg class="learn-more-icon" viewBox="0 0 31 32" width="24" hight="24">
+        <svg class="learn-more-icon" viewBox="0 0 31 32" width="24" height="24">
           <use href="/img/icons.svg#icon-right-caret-learn-more"></use>
         </svg>
       </button>
