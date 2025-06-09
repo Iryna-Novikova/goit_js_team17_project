@@ -1,11 +1,28 @@
-const dataHeaderBurger = document.querySelector('.burger-btn');
-const dataModalHeader = document.querySelector('.mobile-menu');
-const dataBtnHeaderModalClose = document.querySelector('.modal-close');
+import { refer } from './refer';
 
-dataHeaderBurger.addEventListener('click', () => {
-  dataModalHeader.classList.add('is-shown');
-});
+function showModalHeader() {
+  refer.modalHeader.classList.add('is-shown');
+  document.addEventListener('keydown', onEscPress);
+  refer.modalHeader.addEventListener('click', onBackdropClick);
+}
 
-dataBtnHeaderModalClose.addEventListener('click', () => {
-  dataModalHeader.classList.remove('is-shown');
-});
+function closeModalHeader() {
+  refer.modalHeader.classList.remove('is-shown');
+  document.removeEventListener('keydown', onEscPress);
+  refer.modalHeader.removeEventListener('click', onBackdropClick);
+}
+
+function onEscPress(e) {
+  if (e.key === 'Escape') {
+    closeModalHeader();
+  }
+}
+
+function onBackdropClick(e) {
+  if (e.currentTarget === e.target) {
+    closeModalHeader();
+  }
+}
+
+refer.headerBurger.addEventListener('click', showModalHeader);
+refer.modalHeaderCloseBtn.addEventListener('click', closeModalHeader);
