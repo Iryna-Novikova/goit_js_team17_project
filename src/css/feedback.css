@@ -1,0 +1,146 @@
+/*  */
+
+.feedback-section {
+  text-align: center;
+  background-color: #060307;
+  padding-top: 171px;
+  padding-bottom: 112px;
+  padding-left: 64px;
+  padding-right: 64px;
+}
+
+.feedback-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.feedback-swiper {
+  position: relative;
+  max-width: 1312px;
+  margin: 0 auto;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feedback-card {
+  width: 100%;
+  background-color: transparent;
+}
+
+.feedback-card .rating {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.star-rating .star {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.star-rating {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.star-rating .star.filled {
+  color: #764191;
+}
+
+.feedback-card .descr {
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: #fff;
+  display: inline-flex;
+  max-width: 866px;
+}
+
+.feedback-card .name {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 75px;
+}
+
+.feedback-swiper .swiper-button-prev,
+.feedback-swiper .swiper-button-next {
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #fff;
+  fill: #fff;
+  width: 48px !important;
+  height: 48px !important;
+  background-color: #060307;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  transition: background-color 0.3s, opacity 0.3s;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.feedback-swiper .swiper-button-prev {
+  left: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='25' viewBox='0 0 24 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.7069 17.6655L8.41394 13.3725H17.9999V11.3725H8.41394L12.7069 7.07953L11.2929 5.66553L4.58594 12.3725L11.2929 19.0795L12.7069 17.6655Z' fill='%23fff'/%3E%3C/svg%3E");
+}
+
+.feedback-swiper .swiper-button-next {
+  right: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='25' viewBox='0 0 24 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.2931 17.6655L15.5861 13.3725H6.0001V11.3725H15.5861L11.2931 7.07953L12.7071 5.66553L19.4141 12.3725L12.7071 19.0795L11.2931 17.6655Z' fill='%23fff'/%3E%3C/svg%3E");
+}
+
+.feedback-swiper .swiper-button-prev:hover,
+.feedback-swiper .swiper-button-next:hover {
+  opacity: 0.4;
+  border: none;
+}
+
+.feedback-swiper .swiper-button-prev:active,
+.feedback-swiper .swiper-button-next:active {
+  background-color: #1e1c1f;
+}
+
+.feedback-swiper .swiper-button-prev:after,
+.feedback-swiper .swiper-button-next:after {
+  content: none !important;
+}
+
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+}
+
+.custom-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  opacity: 0.2;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+  background-color: #fff;
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
