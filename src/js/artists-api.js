@@ -16,7 +16,7 @@ export async function getArtists(page = 1, limit = 8) {
 }
 
 export async function getArtistCard(id) {
-  const endPoint = `/artists/${id}`;
+  const endPoint = `/artists/${id}/albums`;
 
   const params = {
     id,
@@ -26,7 +26,7 @@ export async function getArtistCard(id) {
   return res.data;
 }
 
-export async function getFeedback(page = 1, limit = 1) {
+export async function getFeedback(page = 1, limit = 3) {
   const endPoint = '/feedbacks';
 
   const params = {
@@ -41,16 +41,12 @@ export async function getFeedback(page = 1, limit = 1) {
 export async function postFeedback({ name, rating, descr }) {
   const endPoint = '/feedbacks';
 
-  const headers = {
-    'Content-Type': 'application/json',
-  };
-
   const body = {
     name,
     rating,
     descr,
   };
 
-  const res = await axios.post(endPoint, body, { headers });
+  const res = await axios.post(endPoint, body);
   return res.data;
 }
