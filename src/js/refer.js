@@ -5,10 +5,10 @@
 
 export const refs = {
   // header
-  openMobileMenuBtnEl: document.querySelector('.burger-btn'),
-  closeMobileMenuBtnEl: document.querySelector('.close-menu-btn'),
+  dataHeaderBurger: document.querySelector('.burger-btn'),
+  dataBtnHeaderModalClose: document.querySelector('.close-menu-btn'),
 
-  mobileMenu: document.querySelector('.mobile-menu'), // мобільне меню
+  dataModalHeader: document.querySelector('[data-menu]'), // мобільне меню
   logoLinkMenu: document.querySelector('.logo-link'), // логотип в моб. меню
   mobileNavLinks: document.querySelector('.mobile-nav-links'), // посилання в моб. меню
 
@@ -17,12 +17,14 @@ export const refs = {
 
   // Artists Section
 
-  artistsList: document.querySelector('.artists-gallery'), // Список карток артистів
+  artistsList: document.querySelector('[data-artist-gallery]'), // Список карток артистів
   leanMoreBtn: document.querySelector('.learn-more-btn'), // Кнопка "Learn More" на картці артиста
-  loadMoreBtn: document.querySelector('.load-more'), // Кнопка "Load More"
+  loadMoreBtn: document.querySelector('[data-btn-load-more]'), // Кнопка "Load More"
+  artistLoadEl: document.querySelector('[data-artist-loader]'),
+  artistInfoElm: document.querySelector('[data-artist-info]'),
 
   // Artist Details Modal
-  artistsModalBackdrop: document.querySelector('[data-artists-modal]'), // Модальне вікно
+  artistsModalBackdrop: document.querySelector('[data-artist-detail-loader]'), // Модальне вікно
   artistsModalCloseBtn: document.querySelector('.artists-modal-close-btn'), // Кнопка закриття модального вікна
   artistsModalContentWrapper: document.querySelector(
     '.artist-modal-content-wrapper'
