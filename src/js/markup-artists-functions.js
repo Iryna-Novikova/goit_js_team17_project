@@ -1,7 +1,7 @@
 // тут мають бути фннкції по розмітці карток артистів для секції артисти. 
 import { refs } from './refer.js';
 
-function getArtistCard(artist) {
+function createArtistCard(artist) {
   const {
     _id: id,
     strArtist: name,
@@ -32,8 +32,8 @@ function getArtistCard(artist) {
     </li>
   `;
 }
-export function renderArtists(artistArray) {
-    const markup = artistArray.map(getArtistCard).join('');
+export function getArtists(artistArray) {
+    const markup = artistArray.map(createArtistCard).join('');
     refs.artistsList.insertAdjacentHTML('beforeend', markup);
 }
 
