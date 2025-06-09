@@ -15,7 +15,7 @@
 
     <!--підключення стилів-->
     <script type="module" crossorigin src="/goit_js_team17_project/cd/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/goit_js_team17_project/cd/assets/index-DZ2SJ9M5.css">
+    <link rel="stylesheet" crossorigin href="/goit_js_team17_project/cd/assets/index-CIIE38cY.css">
   </head>
 
   <body>
@@ -54,7 +54,54 @@
 
       <section id="about_us">
   <div class="container">
-    <!-- ваш код тут -->
+    <div class="about-content">
+        <picture class="about-image">
+          <!-- Desktop -->
+          <source
+            media="(min-width: 1440px)"
+            srcset="/goit_js_team17_project/cd/assets/about-us-desk-min-fw1QpoJa.png 1x, /goit_js_team17_project/cd/assets/about-us-desk@2x-min-ChuveW8O.png 2x"
+          />
+
+          <!-- Tablet -->
+          <source
+            media="(min-width: 768px)"
+            srcset="/goit_js_team17_project/cd/assets/about-us-tab-min-B_5nOQ9l.png 1x, /goit_js_team17_project/cd/assets/about-us-tab@2x-min-D6W5ZlBY.png 2x"
+          />
+
+          <!-- Mobile -->
+          <source
+            media="(max-width: 767px)"
+            srcset="/goit_js_team17_project/cd/assets/about-us-mob-min-Du5DTjiK.png 1x, /goit_js_team17_project/cd/assets/about-us-mob@2x-min-CcXUxs1c.png 2x"
+          />
+
+          <!-- Fallback image -->
+          <img
+            src="/goit_js_team17_project/cd/assets/about-us-tab-min-B_5nOQ9l.png"
+            alt="About Us section image"
+            loading="lazy"
+          />
+        </picture>
+
+
+      <div class="about-text">
+        <div class="logo">
+          <a href="index.html">
+            <svg class="about-us-logo">
+              <use href="/goit_js_team17_project/cd/assets/icons-Dpxc_yEu.svg#icon-logo"></use>
+            </svg>
+          </a>
+        </div>
+
+        <h2 class="epilogue about-us-title">
+          About <br class="mobile-break" />ArtistsHub
+        </h2>
+        <p>
+          At ArtistsHub, our mission is to connect music lovers with the artists
+          they adore. We strive to create a vibrant community where discovering
+          new music is as enjoyable as listening to it.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
