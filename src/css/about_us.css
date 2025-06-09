@@ -12,6 +12,10 @@
   gap: 20px;
 }
 
+.about-image {
+  width: 100%;
+}
+
 .about-us-title {
   font-size: 44px;
 }
@@ -35,13 +39,16 @@
   .about-content {
     gap: 24px;
   }
+    .about-image {
+    width: 704px;
+    object-fit: cover;
+  }
 }
 
 .about-text p {
-  font-size: 18px;
-  line-height: 1.5;
-  margin: 0;
+  font-size: 20px;
 }
+
 @media (min-width: 1440px) {
   .about-content {
     flex-direction: row;
@@ -50,7 +57,7 @@
   }
 
   .about-image {
-    flex: 1;
+/*     flex: 1; */
     max-width: 640px;
   }
 
@@ -65,11 +72,7 @@
   }
 
   .about-text p {
-    font-size: 20px;
     font-weight: 400;
-    line-height: 1.5;
   }
-  .about-text .logo {
-    margin-bottom: 24px;
-  }
+
 }
