@@ -136,7 +136,10 @@
   transform: scale(0.9);
   opacity: 0.8;
 }
-
+.close-menu-btn {
+  background-color: #0d0b0b;
+  border: 0;
+}
 @media screen and (min-width: 768px) and (max-width: 1440px) {
   .burger-btn {
     display: none;
