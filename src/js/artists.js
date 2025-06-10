@@ -38,7 +38,7 @@ async function hndLoadMoreClick() {
   }
 }
 
-refer.artistsList.addEventListener('click', e => {
+refs.artistsList.addEventListener('click', e => {
   const card = e.target.closest('.artist-card'); 
   if (!card) return;
 
