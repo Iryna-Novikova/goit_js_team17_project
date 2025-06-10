@@ -16,7 +16,9 @@ function createArtistCard(artist) {
     `</ul>`;
 
   const descriptionText = shortDescription
-    ? shortDescription.slice(0, 90) + '...' : 'No description available.';
+    ? shortDescription.slice(0, 60) + '...' : 'No description available.';
+  
+  const genresString = encodeURIComponent(JSON.stringify(genres));
   
   return `
     <li class="artists-card">
@@ -24,7 +26,7 @@ function createArtistCard(artist) {
       ${genresMarkup}
       <h4 class="artists-name epilogue">${name}</h4>
       <p class="artists-description">${descriptionText}</p>
-      <button class="learn-more-btn" data-id="${id}" type="button">
+      <button class="learn-more-btn" data-id="${id}" data-genres="${genresString}" type="button">
         <span class="learn-more-text">Learn More</span>
         <svg class="learn-more-icon" viewBox="0 0 31 32" width="24" height="24">
           <use href="/img/icons.svg#icon-right-caret-learn-more"></use>
@@ -34,10 +36,11 @@ function createArtistCard(artist) {
   `;
 }
 export function createArtistsList(artistArray) {
-    const markup = artistArray.map(createArtistCard).join('');
-    refs.artistsList.insertAdjacentHTML('beforeend', markup);
+  console.log('Створюємо розмітку для артистів:', artistArray);
+  const markup = artistArray.map(createArtistCard).join('');
+  refs.artistsList.insertAdjacentHTML('beforeend', markup);
 }
 
 export function clearArtistsList() {
-    refs.artistsList.innerHTML = '';
+  refs.artistsList.innerHTML = '';
 }
