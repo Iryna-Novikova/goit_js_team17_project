@@ -32,6 +32,15 @@
   fill: #fff;
   width: 64px;
   height: 64px;
+  transition: fill 0.3s ease;
+}
+.logo-link:hover .about-us-logo {
+  fill: #764191; /* Колір заливки SVG при наведенні на посилання */
+}
+
+/* Фокус ефект для посилання з класом .logo-link */
+.logo-link:focus .about-us-logo {
+  fill: #764191; /* Колір заливки SVG при фокусі на посиланні */
 }
 
 @media (min-width: 768px) {
