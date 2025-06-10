@@ -33,7 +33,7 @@ function createArtistCard(artist) {
     </li>
   `;
 }
-export function getArtists(artistArray) {
+export function createArtistsList(artistArray) {
     const markup = artistArray.map(createArtistCard).join('');
     refs.artistsList.insertAdjacentHTML('beforeend', markup);
 }
