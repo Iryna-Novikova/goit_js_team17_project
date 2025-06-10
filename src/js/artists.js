@@ -1,95 +1,58 @@
-// робота з кнопками Load More, Learn more, дозавантаження 
-// картинок, опрацювання повідомлень у разі помилкового запиту
 
-document.addEventListener('DOMContentLoaded', () => {
-  const gallery = document.querySelector('.artists-gallery');
-  const loadMoreBtn = document.querySelector('[data-btn-load-more]');
+import { refs } from './refer.js';
+import { createArtistsList } from './markup-artists-functions.js';
+import { hideLoadMoreBtn, showLoaderArtist, showLoadMoreBtn, hideLoaderArtist } from './show-hide-functions.js';
+import { getArtist } from ''; 
 
-  let currentPage = 1;
-  const limit = 8; 
-  let allArtists = []; 
+let currentPage = 1;
+const limit = 8;
+let allArtists = []; 
+let totalPages = 0; 
 
-  const API_URL = 'https://sound-wave.b.goit.study/api';
+refs.loaderBtn.addEventListener('click', hndLoadMoreClick); 
 
-  async function fetchArtists() {
-    try {
-      const response = await fetch(`${API_URL}/artists`);
-      if (!response.ok) throw new Error('Помилка мережі');
+async function hndLoadMoreClick() {
+  try {
+    hideLoadMoreBtn();
+    showLoaderArtist();
 
-      const data = await response.json();
-      allArtists = data.artists;
-
-      gallery.innerHTML = '';
-      currentPage = 1;
-
-      renderArtists();
-      checkLoadMoreVisibility();
-    } catch (error) {
-      console.error('❌ Помилка завантаження артистів:', error);
-    }
-  }
-
-  function getShortBio(bio) {
-    if (!bio) return 'No biography available.';
-    const words = bio.split(' ');
-    return words.length > 25 ? words.slice(0, 25).join(' ') + '...' : bio;
-  }
-
-  function renderArtists() {
-    const startIndex = (currentPage - 1) * limit;
-    const endIndex = currentPage * limit;
-    const visibleArtists = allArtists.slice(startIndex, endIndex);
-
-    const markup = visibleArtists.map(artist => `
-      <li class="artist-list">
-        <img src="${artist.strArtistThumb}" alt="${artist.strArtist}" />
-        <div class="genres">
-          ${artist.genres.map(genre => `<span class="genre">${genre}</span>`).join('')}
-        </div>
-        <h4 class="artist-name">${artist.strArtist}</h4>
-        <p class="artist-info">${getShortBio(artist.strBiographyEN)}</p>
-        <button class="learn-more" data-id="${artist._id}">Learn More
-          <svg width="16" height="16" aria-hidden="true" fill="white">
-            <use href="../img/icons.svg#icon-right-caret-learn-more"></use>
-          </svg>
-        </button>
-      </li>
-    `).join('');
-
-    gallery.insertAdjacentHTML('beforeend', markup);
-  }
-
-  function checkLoadMoreVisibility() {
-    if (currentPage * limit >= allArtists.length) {
-      loadMoreBtn.classList.add('visually-hidden');
+    
+    const data = await getArtist(currentPage, limit);
+    const newArtists = data.artists; 
+    allArtists = [...allArtists, ...newArtists]; 
+    createArtistsList(newArtists); 
+    const totalFetchedArtists = data.totalArtists; 
+    totalPages = Math.ceil(totalFetchedArtists / limit); 
+    if (currentPage < totalPages) {
+      showLoadMoreBtn();
+      currentPage++;
     } else {
-      loadMoreBtn.classList.remove('visually-hidden');
+      
+      hideLoadMoreBtn();
     }
+
+  } catch (error) {
+    console.error('Помилка завантаження артистів:', error);
+  } finally {
+    hideLoaderArtist();
+  }
+}
+
+refer.artistsList.addEventListener('click', e => {
+  const card = e.target.closest('.artist-card'); 
+  if (!card) return;
+
+  const learnMoreBtn = card.querySelector('.learn-more');
+  const artistId = learnMoreBtn?.dataset.id;
+  if (!artistId) return;
+
+  const artist = allArtists.find(item => item._id === artistId);
+  if (!artist) {
+    console.warn('Артиста не знайдено за ID:', artistId);
+    return;
   }
 
-  loadMoreBtn.addEventListener('click', () => {
-    currentPage++;
-    renderArtists();
-    checkLoadMoreVisibility();
-  });
-
-  gallery.addEventListener('click', e => {
-    const card = e.target.closest('.artist-list');
-    if (!card) return;
-
-    const learnMoreBtn = card.querySelector('.learn-more');
-    const artistId = learnMoreBtn?.dataset.id;
-    if (!artistId) return;
-
-    const artist = allArtists.find(item => item._id === artistId);
-    if (!artist) return;
-
-    console.log('data-artists-modal', artist);
-  });
-
-
-
-  fetchArtists();
+  console.log('data-artists-modal', artist); 
 });
 
 
