@@ -1,11 +1,7 @@
-.footer {
-  padding: 48px 0;
-  width: 100%;
-  min-width: 320px;
-  margin: 0 auto;
-}
-
 .footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
   margin-bottom: 48px;
 }
 
@@ -19,33 +15,32 @@
 .f-nav-link > li > a {
   font-weight: 600;
   font-size: 16px;
-  line-height: 1.5;
-  color: #fff;
+}
 
-  &:hover {
-    color: #764191;
-  }
+.f-nav-link > li > a:focus,
+.f-nav-link > li > a:hover {
+  color: #764191;
+}
 
-  &:focus {
-    color: #764191;
-  }
+.f-nav-link > li > a:active {
+  color: #764191;
+}
+
+.footer-logo-hover {
+  margin: 0 auto;
+  display: block;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  fill: #764191;
+}
+
+.footer-logo-hover:hover,
+.footer-logo-hover:focus {
+  fill: #fff;
 }
 
 .footer-logo {
-  width: 84px;
-  height: 36px;
-  display: block;
-  margin: 0px auto;
-  margin-bottom: 32px;
-  fill: #764191;
-
-  &:hover {
-    fill: #fff;
-  }
-
-  &:focus {
-    fill: #fff;
-  }
+  width: 106px;
+  height: 30px;
 }
 
 .footer-social {
@@ -63,18 +58,11 @@
 }
 
 .f-link-icon {
-  fill: #fff;
   width: 40px;
   height: 40px;
+  fill: #fff;
   display: block;
-
-  &:hover {
-    fill: #764191;
-  }
-
-  &:focus {
-    fill: #764191;
-  }
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .f-link-icon > svg {
@@ -82,10 +70,17 @@
   height: 40px;
 }
 
+.f-link-icon:hover,
+.f-link-icon:focus {
+  fill: #764191;
+}
+
+.f-link-icon:active {
+  fill: #764191;
+}
+
 .f-text-privacy {
-  font-weight: 400;
   font-size: 16px;
-  line-height: 1.5;
   color: #fff;
   text-align: center;
 }
@@ -95,29 +90,16 @@
 }
 
 @media screen and (min-width: 768px) {
-  .footer {
-    max-width: 768px;
-    width: 100%;
-    padding: 80px 0px;
-  }
-
   .logo-mob {
     display: none;
   }
 
   .logo-tab {
     display: block;
-    width: 116px;
-    height: 45px;
   }
 
   .footer-nav {
     margin-bottom: 80px;
-  }
-
-  .footer-logo {
-    width: 116px;
-    height: 45px;
   }
 
   .f-nav-link {
@@ -156,17 +138,12 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .footer {
-    max-width: 1440px;
-    padding: 80px 64px;
-  }
-
-  .f-link-icon {
+  .f-link-icon > svg {
     width: 24px;
     height: 24px;
   }
 
-  .f-link-icon > svg {
+  .f-link-icon {
     width: 24px;
     height: 24px;
   }
