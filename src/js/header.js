@@ -1,13 +1,13 @@
 import { refer } from './refer';
 
 function showMobileMenu() {
-  refer.modalHeader.classList.add('is-shown');
+  refer.modalHeader.classList.add('is-shown-menu-header');
   document.addEventListener('keydown', onEscPress);
   refer.modalHeader.addEventListener('click', onBackdropClick);
 }
 
 function hideMobileMenu() {
-  refer.modalHeader.classList.remove('is-shown');
+  refer.modalHeader.classList.remove('is-shown-menu-header');
   document.removeEventListener('keydown', onEscPress);
   refer.modalHeader.removeEventListener('click', onBackdropClick);
 }

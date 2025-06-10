@@ -83,7 +83,7 @@
   align-items: flex-start;
   visibility: hidden;
 }
-.is-shown {
+.is-shown-menu-header {
   visibility: visible;
 }
 .mobile-menu-container {
