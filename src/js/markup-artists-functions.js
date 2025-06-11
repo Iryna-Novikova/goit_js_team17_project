@@ -35,8 +35,8 @@ function createArtistCard(artist) {
     </li>
   `;
 }
+
 export function createArtistsList(artistArray) {
-  console.log('Створюємо розмітку для артистів:', artistArray);
   const markup = artistArray.map(createArtistCard).join('');
   refs.artistsList.insertAdjacentHTML('beforeend', markup);
 }
