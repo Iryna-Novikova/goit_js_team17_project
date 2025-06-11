@@ -18,7 +18,7 @@ function createArtistCard(artist) {
   const descriptionText = shortDescription
     ? shortDescription.slice(0, 60) + '...' : 'No description available.';
   
-  const genresString = encodeURIComponent(JSON.stringify(genres));
+  // const genresString = encodeURIComponent(JSON.stringify(genres));
   
   return `
     <li class="artists-card">
@@ -26,7 +26,7 @@ function createArtistCard(artist) {
       ${genresMarkup}
       <h4 class="artists-name epilogue">${name}</h4>
       <p class="artists-description">${descriptionText}</p>
-      <button class="learn-more-btn" data-id="${id}" data-genres="${genresString}" type="button">
+      <button class="learn-more-btn" data-id="${id}" data-genres="${genres}" type="button">
         <span class="learn-more-text">Learn More</span>
         <svg class="learn-more-icon" viewBox="0 0 31 32" width="24" height="24">
           <use href="/img/icons.svg#icon-right-caret-learn-more"></use>
