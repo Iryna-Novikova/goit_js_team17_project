@@ -1,15 +1,21 @@
-import { refer } from './refer';
+import { refs } from './refer';
 
 function showMobileMenu() {
-  refer.modalHeader.classList.add('is-shown-menu-header');
+  refs.modalHeader.classList.add('is-shown-menu-header');
   document.addEventListener('keydown', onEscPress);
-  refer.modalHeader.addEventListener('click', onBackdropClick);
+  refs.modalHeader.addEventListener('click', onBackdropClick);
+  refs.modalHeaderCloseBtn.addEventListener('click', hideMobileMenu);
+  refs.mobileNavLinks.addEventListener('click', onNavClick);
+  document.body.classList.add('no-scroll');
 }
 
 function hideMobileMenu() {
-  refer.modalHeader.classList.remove('is-shown-menu-header');
+  refs.modalHeader.classList.remove('is-shown-menu-header');
   document.removeEventListener('keydown', onEscPress);
-  refer.modalHeader.removeEventListener('click', onBackdropClick);
+  refs.modalHeader.removeEventListener('click', onBackdropClick);
+  refs.modalHeaderCloseBtn.removeEventListener('click', hideMobileMenu);
+  refs.mobileNavLinks.addEventListener('click', onNavClick);
+  document.body.classList.remove('no-scroll');
 }
 
 function onEscPress(e) {
@@ -24,5 +30,11 @@ function onBackdropClick(e) {
   }
 }
 
-refer.headerBurger.addEventListener('click', showMobileMenu);
-refer.modalHeaderCloseBtn.addEventListener('click', hideMobileMenu);
+function onNavClick(e) {
+  if (e.target.tagName === 'A') {
+    hideMobileMenu();
+  }
+}
+
+refs.headerBurger.addEventListener('click', showMobileMenu);
+refs.modalHeaderCloseBtn.addEventListener('click', hideMobileMenu);

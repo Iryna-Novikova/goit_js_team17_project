@@ -1,0 +1,92 @@
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  justify-content: center;
+}
+
+.about-text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.about-image {
+  display: block;
+  box-sizing: border-box;
+  height: auto;
+  width: 100%;
+  margin: 0 auto;
+  /* min-width: 288px; */
+}
+
+.about-us-title {
+  font-size: 44px;
+}
+.mobile-break {
+  display: none;
+}
+.about-us-logo {
+  fill: #fff;
+  width: 64px;
+  height: 64px;
+  transition: fill 0.3s ease;
+}
+.logo-link:hover .about-us-logo {
+  fill: #764191; /* Колір заливки SVG при наведенні на посилання */
+}
+
+/* Фокус ефект для посилання з класом .logo-link */
+.logo-link:focus .about-us-logo {
+  fill: #764191; /* Колір заливки SVG при фокусі на посиланні */
+}
+
+@media (min-width: 768px) {
+  .mobile-break {
+    display: inline;
+  }
+  .about-us-logo {
+    width: 80px;
+    height: 80px;
+  }
+  .about-content {
+    gap: 24px;
+  }
+  .about-image {
+    width: 704px;
+    /* object-fit: cover; */
+  }
+}
+
+.about-text p {
+  font-size: 20px;
+}
+
+@media (min-width: 1440px) {
+  .about-content {
+    flex-direction: row;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .about-image {
+    /*     flex: 1; */
+    width: 640px;
+  }
+
+  .about-text {
+    flex: 1;
+    width: 640px;
+    color: #ffffff;
+  }
+
+  .about-us-title {
+    font-size: 60px;
+  }
+
+  .about-text p {
+    font-weight: 400;
+  }
+}
