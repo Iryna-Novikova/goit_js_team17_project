@@ -11,7 +11,6 @@ export const refs = {
   artistsListElm: document.querySelector('[data-artist-gallery]'), // Список карток артистів
   loadMoreBtnElm: document.querySelector('[data-btn-load-more]'), // Кнопка "Load More"
   artistLoaderElm: document.querySelector('[data-artist-loader]'),
-  
 
   // Artist Details Modal
   artistInfoElm: document.querySelector('[data-artist-info]'),
@@ -34,4 +33,5 @@ export const refs = {
 
   feedbackFormRatingContainer: document.querySelector('.form-str'), // Контейнер для рейтингу зірочками
   feedbackFormSubmitBtn: document.querySelector('.form-end-button'), // Кнопка відправки форми
+  body: document.body,
 };
