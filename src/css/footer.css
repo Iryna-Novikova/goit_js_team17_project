@@ -100,6 +100,11 @@
     padding-bottom: 80px;
   }
 
+  .footer-logo {
+    width: 116px;
+    height: 45px;
+  }
+
   .logo-mob {
     display: none;
   }
