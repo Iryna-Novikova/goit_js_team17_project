@@ -16,6 +16,7 @@ export const refs = {
   artistInfoElm: document.querySelector('[data-artist-info]'),
   artistsModalBackdrop: document.querySelector('[data-artists-modal]'), // Модальне вікно
   artistsModalCloseBtn: document.querySelector('.artists-modal-close-btn'), // Кнопка закриття модального вікна
+  artistModalLoaderElm: document.querySelector('[data-artist-detail-loader]'), //loader для модального вікна
 
   // Feedback Section
 
@@ -33,5 +34,6 @@ export const refs = {
 
   feedbackFormRatingContainer: document.querySelector('.form-str'), // Контейнер для рейтингу зірочками
   feedbackFormSubmitBtn: document.querySelector('.form-end-button'), // Кнопка відправки форми
-  body: document.body,
+
+  body: document.body, //для блокування скролу
 };

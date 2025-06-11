@@ -1,4 +1,4 @@
-import { refs } from './refs.js';
+import { refs } from './refer.js';
 
 export function createArtistCard(artist, genres) {
   const markup = artistCardMarkup(artist, genres);
@@ -70,18 +70,17 @@ function createAlbumListMarkup(album) {
     .map(track => createTrackListMarkup(track))
     .join('');
 
-  return `
-    <li>
-      <p class="album-name">${albumName}</p>
-      <ul class="tracks-title">
-        <li>Track</li>
-        <li>Time</li>
-        <li>Link</li>
-      </ul>
-      <ul class="tracks-list">
-        ${tracksListMarkup}
-      </ul>
-    </li>`;
+  return `<li>
+    <p class="album-name">${albumName}</p>
+    <ul class="tracks-title">
+      <li>Track</li>
+      <li>Time</li>
+      <li>Link</li>
+    </ul>
+    <ul class="tracks-list">
+      ${tracksListMarkup}
+    </ul>
+  </li>`;
 }
 
 function createTrackListMarkup({
