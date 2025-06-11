@@ -25,6 +25,7 @@ export const refs = {
   feedbackSliderPagination: document.querySelector('.swiper-pagination'), // Пагінація
   openFeedbackBtn: document.querySelector('.leave-feedback-btn'), // Кнопка відкриття форми фідбеку
   feedbackLoaderElm: document.querySelector('[data-feedback-loader]'), //Лоудер для секції фідбеку
+  feedbackSliderWrapperElm: document.querySelector('[data-feedbackLists]'), //Список відгуків
 
   // Feedback Modal
   feedbackFormBackdrop: document.querySelector('[data-feedback-form]'), // Модалка з формою фідбеку
