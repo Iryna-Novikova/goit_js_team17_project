@@ -8,12 +8,13 @@ export const refs = {
   mobileNavLinks: document.querySelector('.mobile-nav-links'), // посилання в моб. меню
 
   // Artists Section
-  artistsList: document.querySelector('[data-artist-gallery]'), // Список карток артистів
-  loaderBtn: document.querySelector('[data-btn-load-more]'), // Кнопка "Load More"
-  artistLoadEl: document.querySelector('[data-artist-loader]'),
-  artistInfoElm: document.querySelector('[data-artist-info]'),
+  artistsListElm: document.querySelector('[data-artist-gallery]'), // Список карток артистів
+  loadMoreBtnElm: document.querySelector('[data-btn-load-more]'), // Кнопка "Load More"
+  artistLoaderElm: document.querySelector('[data-artist-loader]'),
+  
 
   // Artist Details Modal
+  artistInfoElm: document.querySelector('[data-artist-info]'),
   artistsModalBackdrop: document.querySelector('[data-artists-modal]'), // Модальне вікно
   artistsModalCloseBtn: document.querySelector('.artists-modal-close-btn'), // Кнопка закриття модального вікна
 
@@ -23,7 +24,7 @@ export const refs = {
   feedbackSliderNextBtn: document.querySelector('.swiper-button-next'), // Кнопки навігації слайдера
   feedbackSliderPagination: document.querySelector('.swiper-pagination'), // Пагінація
   openFeedbackBtn: document.querySelector('.leave-feedback-btn'), // Кнопка відкриття форми фідбеку
-  feedbackLoaderElm: document.querySelector('[data-feedback-loader]'),
+  feedbackLoaderElm: document.querySelector('[data-feedback-loader]'), //Лоудер для секції фідбеку
 
   // Feedback Modal
   feedbackFormBackdrop: document.querySelector('[data-feedback-form]'), // Модалка з формою фідбеку
