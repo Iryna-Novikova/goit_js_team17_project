@@ -1,4 +1,4 @@
-import { refs } from './js/refer.js';
+import { refs } from './refer.js';
 
 export function showLoadMoreBtn() {
   refs.loadMoreBtn.classList.remove('visually-hidden');
