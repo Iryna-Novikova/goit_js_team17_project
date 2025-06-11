@@ -1,11 +1,11 @@
-import { refer } from "./refer.js";
+import { refs } from "./refer.js";
 
 export function createArtistCard(artist, genres) { 
     artistCardMarkup = artistCardMarkup(artist, genres);
-    refer.artistInfoElm.innerHTML= artistCardMarkup;
+    refs.artistInfoElm.innerHTML= artistCardMarkup;
 }
 
-export function artistCardMarkup(artist, genres)
+function artistCardMarkup(artist, genres)
 {
     const {
         strArtist: name,
@@ -93,8 +93,6 @@ function createAlbumListMarkup(album) {
     } = album;
 
     const tracksListMarkup = tracks.map((track) => crateTrackListMarkup(track)).join('');
-
-    console.log(tracksListMarkup);
     
     return `<li>
     <p class="album-name">${albumName}</p>
