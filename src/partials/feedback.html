@@ -1,61 +1,28 @@
-<!-- <section class="feedback-section" id="reviews">
+<section class="feedback-container" id="feedback">
   <div class="container">
-    <div class="swiper feedback-swiper">
-      <div class="swiper-wrapper" id="feedback-container"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-pagination custom-pagination"></div>
-    </div>
-    <div class="loader visually-hidden" data-feedback-loader>
-      <div class="vinyl-loader">
-        <div class="vinyl-center"></div>
+    <div class="feedback-section">
+      <div class="swiper-container">
+        <div class="swiper-wrapper" id="feedback-wrapper">
+          <div class="swiper-slide loading-slide">
+            <div class="loader-wrapper">
+              <span class="loader"></span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section> -->
-<!-- <section class="feedback-section" id="reviews">
-  <div class="container">
-    <div class="swiper feedback-swiper">
-      <ul class="swiper-wrapper" id="feedback-container"></ul>
-      <div class="swiper-pagination custom-pagination"></div>
-      <div class="swiper-button-prev">
-        <svg class="arrow" width="24" height="24">
-          <use href="/img/icons.svg#icon-left-arrow-reviews"></use>
-        </svg>
+      <div class="swiper-buttons">
+        <button id="prevBtn" aria-label="Попередній відгук">
+          <svg class="more-btn-icon">
+            <use href="../img/icons.svg#icon-left-arrow-reviews"></use>
+          </svg>
+        </button>
+        <button id="nextBtn" aria-label="Наступний відгук">
+          <svg class="more-btn-icon">
+            <use href="../img/icons.svg#icon-right-arrow-reviews"></use>
+          </svg>
+        </button>
       </div>
-      <div class="swiper-button-next">
-        <svg class="arrow" width="24" height="24">
-          <use href="/img/icons.svg#icon-right-arrow-reviews"></use>
-        </svg>
-      </div>
+      <div class="pagination" id="pagination"></div>
     </div>
-  </div>
-  <button class="btn" type="submit" id="open-feedback">
-    <p class="btn-txt">Leave feedback</p>
-  </button>
-</section> -->
-
-<!-- <section class="feedback-section" id="reviews">
-  <div class="container">
-    <div class="swiper feedback-swiper swiper-wrapper" data-feedbackLists></div>
-    <div class="swiper-button-next">
-      <svg class="arrow" width="24" height="24">
-        <use href="/img/icons.svg#icon-right-arrow-reviews"></use>
-      </svg>
-    </div>
-    <div class="swiper-button-prev">
-      <svg class="arrow" width="24" height="24">
-        <use href="/img/icons.svg#icon-left-arrow-reviews"></use>
-      </svg>
-    </div>
-    <div class="swiper-pagination"></div>
-  </div>
-</section> -->
-<section class="feedback-section" id="reviews">
-  <div class="container">
-    <div class="swiper feedback-swiper swiper-wrapper" data-feedbackLists></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
   </div>
 </section>
