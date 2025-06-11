@@ -1,7 +1,12 @@
+.footer > .container {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
 .footer-nav {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 32px;
   margin-bottom: 48px;
 }
 
@@ -39,8 +44,8 @@
 }
 
 .footer-logo {
-  width: 106px;
-  height: 30px;
+  width: 84px;
+  height: 36px;
 }
 
 .footer-social {
@@ -90,6 +95,11 @@
 }
 
 @media screen and (min-width: 768px) {
+  .footer > .container {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
   .logo-mob {
     display: none;
   }
