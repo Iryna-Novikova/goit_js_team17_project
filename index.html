@@ -65,8 +65,22 @@
 </section>
 
       <div class="backdrop" data-artists-modal>
-  <div class="container">
-    <!-- ваш код тут -->
+  <div class="artist-modal-content-wrapper">
+    <button
+      type="button"
+      class="artists-modal-close-btn"
+      aria-label="Close modal"
+    >
+      <svg class="icon-close" width="32" height="32">
+        <use href="/goit_js_team17_project/cd/assets/icons-Dpxc_yEu.svg#icon-close-burger-menu"></use>
+      </svg>
+    </button>
+    <div class="loader visually-hidden" data-artist-detail-loader>
+      <div class="vinyl-loader">
+        <div class="vinyl-center"></div>
+      </div>
+    </div>
+    <div class="artist-modal-info" data-artist-info></div>
   </div>
 </div>
 
