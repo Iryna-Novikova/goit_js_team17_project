@@ -8,13 +8,6 @@ export function hideLoadMoreBtn() {
   refs.loadMoreBtn.classList.add('visually-hidden');
 }
 
-export function showArtistsList() {
-  refs.artistsList.classList.remove('visually-hidden');
-}
-
-export function hideArtistsList() {
-  refs.artistsList.classList.add('visually-hidden');
-}
 export function showLoaderFeedback() {
   refs.feedbackLoaderElm.classList.remove('visually-hidden');
 }
