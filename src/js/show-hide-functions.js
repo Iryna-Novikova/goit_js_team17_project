@@ -1,11 +1,11 @@
 import { refs } from './refer.js';
 
 export function showLoadMoreBtn() {
-  refs.loadMoreBtn.classList.remove('visually-hidden');
+  refs.loadMoreBtnElm.classList.remove('visually-hidden');
 }
 
 export function hideLoadMoreBtn() {
-  refs.loadMoreBtn.classList.add('visually-hidden');
+  refs.loadMoreBtnElm.classList.add('visually-hidden');
 }
 
 export function showLoaderFeedback() {
