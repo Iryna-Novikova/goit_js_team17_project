@@ -14,7 +14,7 @@ function hideMobileMenu() {
   document.removeEventListener('keydown', onEscPress);
   refs.modalHeader.removeEventListener('click', onBackdropClick);
   refs.modalHeaderCloseBtn.removeEventListener('click', hideMobileMenu);
-  refs.mobileNavLinks.addEventListener('click', onNavClick);
+  refs.mobileNavLinks.removeEventListener('click', onNavClick);
   document.body.classList.remove('no-scroll');
 }
 

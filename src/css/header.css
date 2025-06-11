@@ -1,3 +1,12 @@
+html {
+  scroll-behavior: smooth;
+}
+
+#artists,
+#about-us,
+#reviews {
+  scroll-margin-top: 80px;
+}
 .no-scroll {
   overflow: hidden;
   height: 100vh;
@@ -37,7 +46,7 @@
 .mobile-menu {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.8); /* темний фон */
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 2000;
   display: flex;
   justify-content: flex-start;
@@ -50,7 +59,7 @@
 .mobile-menu-container {
   width: 100%;
   height: 100%;
-  background-color: #0d0b0b; /* темний фон блоку */
+  background-color: #0d0b0b;
   padding: 7px 20px;
   display: flex;
   flex-direction: column;
@@ -102,8 +111,10 @@
   border: 0;
 }
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
 }
 @media screen and (min-width: 768px) and (max-width: 1440px) {
