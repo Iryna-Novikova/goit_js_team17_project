@@ -2,6 +2,7 @@
 import { refs } from './refer.js';
 import { createArtistsList } from './markup-artists-functions.js';
 import { hideLoadMoreBtn, showLoaderArtist, showLoadMoreBtn, hideLoaderArtist } from './show-hide-functions.js';
+import { openArtistModal } from './artists-api.js'; 
 import { getArtist } from ''; 
 
 let currentPage = 1;
@@ -39,20 +40,27 @@ async function hndLoadMoreClick() {
 }
 
 refs.artistsList.addEventListener('click', e => {
-  const card = e.target.closest('.artist-card'); 
-  if (!card) return;
+  const card = e.target.closest('.artists-card');
+  if (!card) return; 
+  const learnMoreBtn = card.querySelector('.learn-more-btn');
+  if (!learnMoreBtn || !learnMoreBtn.contains(e.target)) {
+    return; 
+  }
 
-  const learnMoreBtn = card.querySelector('.learn-more');
-  const artistId = learnMoreBtn?.dataset.id;
-  if (!artistId) return;
-
-  const artist = allArtists.find(item => item._id === artistId);
-  if (!artist) {
-    console.warn('Артиста не знайдено за ID:', artistId);
+  const artistId = learnMoreBtn.dataset.id;
+  if (!artistId) {
+    console.warn('Не знайдено data-id на кнопці "Learn More"');
     return;
   }
 
-  console.log('data-artists-modal', artist); 
+  const artist = allArtists.find(item => item._id === artistId);
+  if (!artist) {
+    console.warn(`Артиста з ID "${artistId}" не знайдено у завантажених даних.`);
+    return;
+  }
+
+  openArtistModal(artist);
+  
 });
 
 
