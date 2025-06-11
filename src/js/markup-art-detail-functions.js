@@ -1,11 +1,11 @@
 import { refs } from "./refer.js";
 
-export function createArtistCard(artist, genres) { 
-    artistCardMarkup = artistCardMarkup(artist, genres);
+export function createArtistCard(artist) { 
+    artistCardMarkup = artistCardMarkup(artist);
     refs.artistInfoElm.innerHTML= artistCardMarkup;
 }
 
-function artistCardMarkup(artist, genres)
+function artistCardMarkup(artist)
 {
     const {
         strArtist: name,
@@ -17,6 +17,7 @@ function artistCardMarkup(artist, genres)
         strCountry: country,
         strBiographyEN: biography,
         albumsList = [],
+        genres = [],
     } = artist;
 
     const genresListMarkup =
@@ -92,7 +93,7 @@ function createAlbumListMarkup(album) {
         tracks = [],
     } = album;
 
-    const tracksListMarkup = tracks.map((track) => crateTrackListMarkup(track)).join('');
+    const tracksListMarkup = tracks.map((track) => createTrackListMarkup(track)).join('');
     
     return `<li>
     <p class="album-name">${albumName}</p>
@@ -107,7 +108,7 @@ function createAlbumListMarkup(album) {
     </li>`    
 }
 
-function crateTrackListMarkup({ strTrack: trackTitle, intDuration: time, movie }) {
+function createTrackListMarkup({ strTrack: trackTitle, intDuration: time, movie }) {
     const trackTime = getTime(time);
     let movieSrc;
     let movieHidden;

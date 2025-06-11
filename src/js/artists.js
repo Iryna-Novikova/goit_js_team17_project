@@ -16,24 +16,26 @@ async function loadArtistsList () {
       showLoaderArtists();
         const data = await getArtists(currentPage, limit);
         const newArtists = data.artists;
-    const totalFetchedArtists = data.totalArtists;
-        // allArtists = [...allArtists, ...newArtists];
+        const totalFetchedArtists = data.totalArtists;
+
         createArtistsList(newArtists);
         totalPages = Math.ceil (totalFetchedArtists / limit);
         if (currentPage < totalPages) {
-            showLoadMoreBtn();
-            currentPage++;
+          showLoadMoreBtn();
+          currentPage++;
         } else {
-            hideLoadMoreBtn();
+          hideLoadMoreBtn();
         }
     } catch (error) {
     refs.artistsListElm.innerHTML = `Помилка завантаження артистів: ${error}`
   };
       hideLoaderArtists();
 }
+
 function hndLoadMoreClick() {
   loadArtistsList();
 }
+
 refs.loadMoreBtnElm.addEventListener('click', hndLoadMoreClick);
 refs.artistsListElm.addEventListener('click', e => {
   const learnMoreBtn = e.target.closest('.learn-more-btn');
@@ -45,5 +47,5 @@ refs.artistsListElm.addEventListener('click', e => {
     console.warn('Не знайдено data-id на кнопці "Learn More"');
     return;
   }
-  openArtistModal(artistId, learnMoreBtn.dataset.genres);
+  openArtistModal(artistId);
 });

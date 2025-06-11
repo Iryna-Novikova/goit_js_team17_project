@@ -26,7 +26,7 @@ function createArtistCard(artist) {
       ${genresMarkup}
       <h4 class="artists-name epilogue">${name}</h4>
       <p class="artists-description">${descriptionText}</p>
-      <button class="learn-more-btn" data-id="${id}" data-genres="${genres}" type="button">
+      <button class="learn-more-btn" data-id="${id}" type="button">
         <span class="learn-more-text">Learn More</span>
         <svg class="learn-more-icon" viewBox="0 0 31 32" width="24" height="24">
           <use href="/img/icons.svg#icon-right-caret-learn-more"></use>
@@ -38,9 +38,9 @@ function createArtistCard(artist) {
 
 export function createArtistsList(artistArray) {
   const markup = artistArray.map(createArtistCard).join('');
-  refs.artistsList.insertAdjacentHTML('beforeend', markup);
+  refs.artistsListElm.insertAdjacentHTML('beforeend', markup);
 }
 
 export function clearArtistsList() {
-  refs.artistsList.innerHTML = '';
+  refs.artistsListElm.innerHTML = '';
 }
