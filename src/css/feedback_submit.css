@@ -1,10 +1,23 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
 .form-main {
     border-radius: 16px;
     padding-top: 64px;
     padding-bottom: 64px;
     height: 568px;
     position: relative;
-    background: #7c3096;
+    background: #060307;
 }
 
 .form-main-btn {
@@ -104,14 +117,15 @@
     fill: #fff;
     stroke: #fff;
     stroke-width: 2;
-  }
+}
 
-.star:hover,
 .star.active {
     fill: #764191;
     stroke: #764191;
     transform: scale(1.1);
 }
+
+
 
 
 .form-end-button {
