@@ -84,6 +84,11 @@ svg {
   pointer-events: none;
   z-index: 20;
 }
+.swiper-buttons .disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
 /* ПРИХОВУЄМО КНОПКИ ЗА ЗАМОВЧУВАННЯМ (ДЛЯ МОБІЛЬНИХ) */
 .swiper-buttons button {
   display: none;

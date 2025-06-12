@@ -18,9 +18,6 @@ let swiperInstance;
 
 async function fetchFeedbacks() {
     try {
-        // wrapper.innerHTML = '<div class="swiper-slide loading">Завантаження відгуків...</div>';
-
-
         const response = await axios.get('https://sound-wave.b.goit.study/api/feedbacks', {
             params: {
                 limit: 3,
@@ -28,8 +25,6 @@ async function fetchFeedbacks() {
             }
         });
         let feedbacks = response.data.data;
-        console.log(feedbacks);
-
         if (feedbacks && feedbacks.length > 3) {
             feedbacks = feedbacks.slice(0, 3);
         }
@@ -92,7 +87,7 @@ function initSwiper() {
 
     //  Swiper 
     swiperInstance = new Swiper('.swiper-container', {
-        loop: true,
+        loop: false,
         slidesPerView: 1,
         spaceBetween: 0,
         grabCursor: true,
@@ -144,42 +139,24 @@ function initPaginationControls() {
         }
     });
 }
-
 function updatePagination() {
-    if (!swiperInstance || swiperInstance.slides.length === 0) {
-        return;
-    }
-
-
+    if (!swiperInstance || swiperInstance.slides.length === 0) return;
     const activeIndex = swiperInstance.realIndex;
-
+    const totalSlides = swiperInstance.slides.length;
     document.querySelectorAll('.pagination span').forEach((span, index) => {
-        span.classList.remove('active');
-        if (index === activeIndex) {
-            span.classList.add('active');
-        }
+        span.classList.toggle('active', index === activeIndex);
     });
+    if (activeIndex === 0) {
+        prevBtn.classList.add('disabled');
+    } else {
+        prevBtn.classList.remove('disabled');
+    }
+    if (activeIndex === totalSlides - 1) {
+        nextBtn.classList.add('disabled');
+    } else {
+        nextBtn.classList.remove('disabled');
+    }
 }
-
-// function showNoFeedbacksMessage() {
-//     wrapper.innerHTML = '<div class="swiper-slide">Наразі відгуків немає</div>';
-//     if (swiperInstance) {
-//         swiperInstance.destroy(true, true);
-//     }
-//     paginationContainer.innerHTML = '';
-//     document.getElementById('prevBtn').style.display = 'none';
-//     document.getElementById('nextBtn').style.display = 'none';
-// }
-
-// function showErrorMessage() {
-//     wrapper.innerHTML = '<div class="swiper-slide error-message">Не вдалося завантажити відгуки. Спробуйте пізніше.</div>';
-//     if (swiperInstance) {
-//         swiperInstance.destroy(true, true);
-//     }
-//     paginationContainer.innerHTML = '';
-//     document.getElementById('prevBtn').style.display = 'none';
-//     document.getElementById('nextBtn').style.display = 'none';
-// }
 
 
 document.addEventListener('DOMContentLoaded', fetchFeedbacks);
