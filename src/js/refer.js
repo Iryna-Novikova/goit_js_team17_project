@@ -12,7 +12,6 @@ export const refs = {
   loadMoreBtnElm: document.querySelector('[data-btn-load-more]'), // Кнопка "Load More"
   artistLoaderElm: document.querySelector('[data-artist-loader]'),
   
-
   // Artist Details Modal
   artistInfoElm: document.querySelector('[data-artist-info]'),
   artistsModalBackdrop: document.querySelector('[data-artists-modal]'), // Модальне вікно
