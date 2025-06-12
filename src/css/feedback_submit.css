@@ -4,8 +4,9 @@
     padding-bottom: 64px;
     height: 568px;
     position: relative;
-    background: #060307;
+    background: #7c3096;
 }
+
 
 .form-main-btn {
     position: absolute;
@@ -16,6 +17,11 @@
     width: 32px;
     height: 32px;
     background-color: transparent;
+}
+
+.svg-btn{
+    fill: #fff;
+    stroke: #fff;
 }
 
 .form-par{

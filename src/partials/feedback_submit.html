@@ -1,8 +1,8 @@
-<div class="backdrop" data-feedback-form>
-  <form class="form-main container" autocomplete="off">
-    <button class="form-main-btn" href="">
+<div class="backdrop" data-feedback-form id="feedback-backdrop">
+  <form class="form-main container" id="feedback-form" autocomplete="off">
+    <button class="form-main-btn" id="close-feedback-btn">
       <svg class="svg-btn" width="32" height="32">
-        <use href="../img/vector.svg"></use>
+        <use href="/img/icons.svg#icon-close-burger-menu"></use>
       </svg>
       </svg>
     </button>
@@ -11,7 +11,7 @@
     </h4>
     <label class="lab-name">
       Name
-      <input type="text" class="form-name" name="user-name" id="user-name" placeholder="Emily" required>
+      <input type="text" class="form-name" name="user-name" id="user-name" placeholder="Name" required>
     </label>
     <label class="lab-text">
       Message
@@ -20,22 +20,24 @@
       <p class="text-inva">Text error</p>
     </label>
     <div class="form-str">
-      <svg class="svg-str" width="31" height="29" >
-        <use href="../img/sprite.svg"></use>
+      <svg class="svg-str" width="31" height="29" data-rating="1">
+        <use href="/img/sprite.svg"></use>
       </svg>
-      <svg class="svg-str" width="31" height="29">
-        <use href="../img/sprite.svg"></use>
+      <svg class="svg-str" width="31" height="29" data-rating="2">
+        <use href="/img/sprite.svg"></use>
       </svg>
-      <svg class="svg-str" width="31" height="29">
-        <use href="../img/sprite.svg"></use>
+      <svg class="svg-str" width="31" height="29" data-rating="3">
+        <use href="/img/sprite.svg"></use>
       </svg>
-      <svg class="svg-str" width="31" height="29">
-        <use href="../img/sprite.svg"></use>
+      <svg class="svg-str" width="31" height="29" data-rating="4">
+        <use href="/img/sprite.svg"></use>
       </svg>
-      <svg class="svg-str" width="31" height="29">
-        <use href="../img/sprite.svg"></use>
+      <svg class="svg-str" width="31" height="29" data-rating="5">
+        <use href="/img/sprite.svg"></use>
       </svg>
     </div>
-    <button class="form-end-button">Submit</button>
+    <button class="form-end-button" id="submit-btn" type="submit">Submit</button>
   </form>
 </div>
+
+<script src="feedback-form.js"></script>
