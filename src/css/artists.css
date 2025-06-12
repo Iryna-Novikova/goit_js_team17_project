@@ -1,0 +1,128 @@
+.section-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+.section-subtitle {
+  font-size: 44px;
+  margin-bottom: 32px;
+}
+.artists-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 64px;
+  justify-content: center;
+}
+.artists-card {
+  background-color: #060307;
+  overflow: hidden;
+}
+.artist-photo {
+  width: 288px;
+  height: 177px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 16px;
+  display: block;
+  margin-bottom: 24px;
+}
+.artists-genres-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.artists-genre-item {
+  background-color: rgba(255, 255, 255, 0);
+  padding: 4px 10px;
+  text-transform: capitalize;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+}
+.artists-name {
+  font-size: 32px;
+  font-weight: 700; 
+  line-height: 130%;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.artists-description {
+  margin-bottom: 24px;
+}
+.learn-more-btn {
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.3s;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.learn-more-text {
+  color: #fff;
+}
+.learn-more-icon {
+  fill: #fff;
+}
+.learn-more-btn:hover,
+.learn-more-btn:focus {
+  opacity: 0.6;
+}
+.learn-more-btn:active {
+  opacity: 0.2;
+}
+/* Load more button */
+.load-more {
+  margin: 40px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  border: none;
+  padding-left: 83px;
+  background-color: #764191;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+  width: 288px;
+  height: 47px;
+}
+.load-more:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s;
+}
+/*  Адаптив */
+@media (min-width: 768px) {
+  .artists-gallery {
+    gap: 32px;
+  }
+  .artist-photo {
+    width: 704px;
+    height: 432px;
+  }
+  .load-more {
+    width: 340px;
+    padding-left: 109px;
+  }
+}
+@media (min-width: 1440px) {
+  .artists-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .artist-photo {
+    width: 640px;
+    height: 393px;
+  }
+  .load-more {
+    width: 170px;
+    padding-left: 24px;
+  }
+}
