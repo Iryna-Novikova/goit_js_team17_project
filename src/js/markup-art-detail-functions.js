@@ -1,10 +1,8 @@
 import { refs } from './refer.js';
-
 export function createArtistCard(artist, genres) {
   const markup = artistCardMarkup(artist, genres);
   refs.artistInfoElm.innerHTML = markup;
 }
-
 export function artistCardMarkup(artist, genres) {
   const {
     strArtist: name,
@@ -17,27 +15,24 @@ export function artistCardMarkup(artist, genres) {
     strBiographyEN: biography,
     albumsList = [],
   } = artist;
-
   const genresListMarkup = `
     <ul class="artists-genres-list">
       ${genres
         .map(genre => `<li class="artists-genre-item">${genre}</li>`)
         .join(' ')}
     </ul>`;
-
   const albumsListMarkup = albumsList
     .map(album => createAlbumListMarkup(album))
     .join(' ');
-
   let yearsText = formedYear;
   yearsText += diedYear ? `-${diedYear}` : `-present`;
-
   return `
     <h5 class="epilogue artist-name">${name}</h5>
     <div class="artist-info">
       <img class="artist-photo" src="${photo}" alt="${name} photo" />
       <div class="artist-about">
-        <div class="artist-category-info">
+      <div class="artist-about-part">
+        <div class="artist-category-info artist-about-part-left">
           <p class="artist-category-name">Years active</p>
           <p class="artist-category-text">${yearsText}</p>
         </div>
@@ -45,7 +40,9 @@ export function artistCardMarkup(artist, genres) {
           <p class="artist-category-name">Sex</p>
           <p class="artist-category-text">${gender}</p>
         </div>
-        <div class="artist-category-info">
+      </div>
+      <div class="artist-about-part ">
+        <div class="artist-category-info artist-about-part-left">
           <p class="artist-category-name">Members</p>
           <p class="artist-category-text">${members}</p>
         </div>
@@ -53,8 +50,11 @@ export function artistCardMarkup(artist, genres) {
           <p class="artist-category-name">Country</p>
           <p class="artist-category-text">${country}</p>
         </div>
+       </div>
+        <div class="biography-box">
         <p class="artist-category-name">Biography</p>
         <p class="artist-category-text-biography">${biography}</p>
+        </div>
         ${genresListMarkup}
       </div>
     </div>
@@ -62,14 +62,11 @@ export function artistCardMarkup(artist, genres) {
     <ul class="albums-list">${albumsListMarkup}</ul>
   `;
 }
-
 function createAlbumListMarkup(album) {
   const { strAlbum: albumName, tracks = [] } = album;
-
   const tracksListMarkup = tracks
     .map(track => createTrackListMarkup(track))
     .join('');
-
   return `<li>
     <p class="album-name">${albumName}</p>
     <ul class="tracks-title">
@@ -82,7 +79,6 @@ function createAlbumListMarkup(album) {
     </ul>
   </li>`;
 }
-
 function createTrackListMarkup({
   strTrack: trackTitle,
   intDuration: time,
@@ -90,8 +86,7 @@ function createTrackListMarkup({
 }) {
   const trackTime = getTime(time);
   const movieSrc = movie || '';
-  const movieHidden = movie ? '' : ' visually-hidden';
-
+  const movieHidden = movie ? '' : ' movie-hidden';
   return `
     <li class="track-item">
       <p class="track-title">${trackTitle}</p>
@@ -103,14 +98,11 @@ function createTrackListMarkup({
       </a>
     </li>`;
 }
-
 function getTime(ms) {
   const second = 1000;
   const minute = second * 60;
-
   const minutes = Math.floor(ms / minute);
   const seconds = Math.floor((ms % minute) / second);
-
   return (
     minutes.toString().padStart(2, '0') +
     ':' +

@@ -26,7 +26,7 @@ function onCloseBtnClck() {
   closeArtistModal();
 }
 
-export function openArtistModal(id, genres) {
+export function openArtistModal(id) {
   refs.artistsModalBackdrop.classList.add('is-open');
   blockScroll();
   document.addEventListener('keydown', onEscPress);
@@ -35,7 +35,7 @@ export function openArtistModal(id, genres) {
   fetchArtistDetails(id, genres);
 }
 
-async function fetchArtistDetails(id, genres) {
+async function fetchArtistDetails(id) {
   showLoaderModal();
   try {
     const artistData = await getArtistCard(id);
@@ -47,6 +47,7 @@ async function fetchArtistDetails(id, genres) {
         <p class="error-msg">Не вдалося завантажити дані артиста. Спробуйте пізніше.</p>
       `;
   }
+
   hideLoaderModal();
 }
 
