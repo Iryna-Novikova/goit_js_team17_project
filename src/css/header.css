@@ -30,11 +30,14 @@ html {
 .logo-icon {
   fill: #ffffff;
 }
-.logo-icon:hover:active {
+.logo-icon:hover {
   fill: #a259ff;
   transform: scale(1.1);
 }
-
+.logo-icon:active {
+  fill: #a259ff;
+  transform: scale(1.1);
+}
 .burger-btn {
   background: none;
   border: none;
@@ -42,7 +45,12 @@ html {
   fill: white;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
-.burger-btn:hover:active {
+.burger-btn:active {
+  transform: scale(1.1);
+  opacity: 0.8;
+  fill: #a259ff;
+}
+.burger-btn:hover {
   transform: scale(1.1);
   opacity: 0.8;
   fill: #a259ff;
@@ -50,7 +58,10 @@ html {
 .header-list {
   display: none;
 }
-.header-list li:hover:active {
+.header-list li:hover {
+  color: #a259ff;
+}
+.header-list li:active {
   color: #a259ff;
 }
 .mobile-menu {
@@ -97,13 +108,15 @@ html {
   transition: color 0.3s ease;
   margin: 0 auto;
 }
-.mobile-nav-links a:hover:active {
+.mobile-nav-links a:hover {
+  color: #a259ff;
+}
+.mobile-nav-links a:active {
   color: #a259ff;
 }
 .modal-nav {
   display: flex;
   align-items: center;
-  /* ------------ */
   justify-content: space-between;
   padding: 0px 8px 0px 20px;
   gap: 121px;
@@ -117,7 +130,12 @@ html {
   cursor: pointer;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
-.modal-close:active:hover {
+.modal-close:hover {
+  transform: scale(0.9);
+  opacity: 0.8;
+  fill: #a259ff;
+}
+.modal-close:active {
   transform: scale(0.9);
   opacity: 0.8;
   fill: #a259ff;
@@ -145,8 +163,16 @@ html {
   .header-logo {
     fill: blue;
   }
-  .logo-icon use {
+  .logo-icon {
     fill: white;
+  }
+  .logo-icon:hover {
+    fill: #a259ff;
+    transform: scale(1.1);
+  }
+  .logo-icon:active {
+    fill: #a259ff;
+    transform: scale(1.1);
   }
   .container-header {
     padding: 11px 64px;
@@ -161,8 +187,16 @@ html {
     display: flex;
     gap: 32px;
   }
-  .logo-icon use {
+  .logo-icon {
     fill: white;
+  }
+  .logo-icon:hover {
+    fill: #a259ff;
+    transform: scale(1.1);
+  }
+  .logo-icon:active {
+    fill: #a259ff;
+    transform: scale(1.1);
   }
   .container-header {
     padding: 11px 64px;
