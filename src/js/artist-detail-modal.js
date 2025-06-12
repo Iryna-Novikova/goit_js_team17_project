@@ -37,6 +37,10 @@ export function openArtistModal(id) {
 
 async function fetchArtistDetails(id) {
   showLoaderModal();
+  // Сховати контент і кнопку закриття
+  refs.artistsModalCloseBtn.classList.add('visually-hidden');
+  refs.artistInfoElm.classList.add('visually-hidden');
+
   try {
     const artistData = await getArtistCard(id);
     createArtistCard(artistData, genres);
@@ -47,6 +51,9 @@ async function fetchArtistDetails(id) {
         <p class="error-msg">Не вдалося завантажити дані артиста. Спробуйте пізніше.</p>
       `;
   }
+  // Показати контент і хрестик після завантаження
+  refs.artistInfoElm.classList.remove('visually-hidden');
+  refs.artistsModalCloseBtn.classList.remove('visually-hidden');
 
   hideLoaderModal();
 }
