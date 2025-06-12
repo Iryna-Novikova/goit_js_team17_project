@@ -1,174 +1,301 @@
-import { 
-    feedbackFormEL as form,
-    feedbackFormBackdrop,
-    feedbackFormCloseBtn,
-    feedbackFormRatingContainer,
-    feedbackFormSubmitBtn 
-} from './refer.js';
-
-import { postFeedback } from './artists-api.js';
-
-const LOCAL_STORAGE_KEY = 'form-state';
-
-let formData = {
-    name: '',
-    message: '',
-    rating: null
-};
-
-function handleCloseForm() {
-    feedbackFormBackdrop.style.display = 'none';
-    document.body.style.overflow = '';
-    removeEventListeners();
-}
-
-function handleEscapeKey(event) {
-    if (event.key === 'Escape') {
-        handleCloseForm();
+class FeedbackModal {
+    constructor() {
+        this.formData = {
+            name: '',
+            message: '',
+            rating: null
+        };
+        
+        this.validationRules = {
+            name: { min: 2, max: 16 },
+            message: { min: 10, max: 512 },
+            rating: { min: 1, max: 5 }
+        };
+        
+        this.init();
     }
-}
 
-function handleBackdropClick(event) {
-    if (event.target === feedbackFormBackdrop) {
-        handleCloseForm();
+    init() {
+        this.bindElements();
+        this.bindEvents();
+        this.loadSavedData();
     }
-}
 
-function handleInputChange(event) {
-    if (event.target.name === 'user-name') {
-        formData.name = event.target.value.trim();
-    } else if (event.target.name === 'user-comment') {
-        formData.message = event.target.value.trim();
+    bindElements() {
+        this.openBtn = document.getElementById('openModalBtn');
+        this.modal = document.getElementById('feedbackModal');
+        this.form = document.getElementById('feedbackForm');
+        this.closeBtn = document.getElementById('closeModalBtn');
+        
+        this.nameInput = document.getElementById('user-name');
+        this.messageInput = document.getElementById('user-comment');
+        this.ratingContainer = document.getElementById('rating-container');
+        this.submitBtn = document.getElementById('submitBtn');
+        
+        this.stars = this.ratingContainer?.querySelectorAll('.star') || [];
+        
+        this.errors = {
+            name: document.getElementById('name-error'),
+            message: document.getElementById('message-error')
+        };
     }
-    
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formData));
-}
 
-function handleRatingClick(event) {
-    const star = event.target.closest('svg');
-    if (!star) return;
-    
-    const stars = feedbackFormRatingContainer.querySelectorAll('svg');
-    const clickedIndex = Array.from(stars).indexOf(star);
-    
-    if (clickedIndex !== -1) {
-        formData.rating = clickedIndex + 1;
-        updateStarsDisplay(clickedIndex + 1);
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formData));
+    bindEvents() {
+        this.openBtn?.addEventListener('click', () => this.openModal());
+        this.closeBtn?.addEventListener('click', () => this.closeModal());
+        this.modal?.addEventListener('click', (e) => this.handleBackdropClick(e));
+        document.addEventListener('keydown', (e) => this.handleEscapeKey(e));
+        
+        this.form?.addEventListener('input', (e) => this.handleInputChange(e));
+        this.form?.addEventListener('submit', (e) => this.handleSubmit(e));
+        this.ratingContainer?.addEventListener('click', (e) => this.handleRatingClick(e));
+        
+        this.bindStarHoverEvents();
     }
-}
 
-function updateStarsDisplay(rating) {
-    const stars = feedbackFormRatingContainer.querySelectorAll('svg');
-    stars.forEach((star, index) => {
-        if (index < rating) {
-            star.style.fill = '#FFD700';
+    bindStarHoverEvents() {
+        this.stars.forEach((star, index) => {
+            star.addEventListener('mouseenter', () => this.handleStarHover(index + 1));
+            star.addEventListener('mouseleave', () => this.updateStarsDisplay(this.formData.rating));
+        });
+    }
+
+    openModal() {
+        if (!this.modal) return;
+        
+        this.modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        
+        setTimeout(() => {
+            this.nameInput?.focus();
+        }, 100);
+    }
+
+    closeModal() {
+        if (!this.modal) return;
+        
+        this.modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+    }
+
+    handleBackdropClick(event) {
+        if (event.target === this.modal) {
+            this.closeModal();
+        }
+    }
+
+    handleEscapeKey(event) {
+        if (event.key === 'Escape' && this.modal?.classList.contains('is-open')) {
+            this.closeModal();
+        }
+    }
+
+    handleInputChange(event) {
+        const { name, value } = event.target;
+        
+        switch (name) {
+            case 'user-name':
+                this.formData.name = value.trim();
+                this.validateField('name');
+                break;
+            case 'user-comment':
+                this.formData.message = value.trim();
+                this.validateField('message');
+                break;
+        }
+        
+        this.saveData();
+    }
+
+    handleRatingClick(event) {
+        const star = event.target.closest('.star');
+        if (!star) return;
+        
+        const rating = parseInt(star.dataset.rating);
+        if (rating >= 1 && rating <= 5) {
+            this.formData.rating = rating;
+            this.updateStarsDisplay(rating);
+            this.saveData();
+        }
+    }
+
+    handleStarHover(rating) {
+        this.updateStarsDisplay(rating, true);
+    }
+
+    updateStarsDisplay(rating, isHover = false) {
+        this.stars.forEach((star, index) => {
+            star.classList.toggle('active', index < rating);
+            
+            if (isHover) {
+                star.classList.toggle('hover', index < rating);
+            } else {
+                star.classList.remove('hover');
+            }
+        });
+    }
+
+    validateField(fieldName) {
+        const rules = this.validationRules[fieldName];
+        if (!rules) return true;
+
+        let isValid = true;
+        const value = this.formData[fieldName];
+        const input = fieldName === 'name' ? this.nameInput : this.messageInput;
+        const errorElement = this.errors[fieldName];
+
+        if (!value || value.length < rules.min || value.length > rules.max) {
+            input?.classList.add('error');
+            if (errorElement) errorElement.style.display = 'block';
+            isValid = false;
         } else {
-            star.style.fill = 'white';
+            input?.classList.remove('error');
+            if (errorElement) errorElement.style.display = 'none';
         }
-    });
-}
 
-function validateFormData() {
-    const errors = [];
-    
-    if (!formData.name || formData.name.length < 2) {
-        errors.push('Name must be at least 2 characters long');
+        return isValid;
     }
-    if (formData.name.length > 16) {
-        errors.push('Name must be no more than 16 characters long');
-    }
-    
-    if (!formData.rating || formData.rating < 1 || formData.rating > 5) {
-        errors.push('Please select a rating from 1 to 5 stars');
-    }
-    
-    if (!formData.message || formData.message.length < 10) {
-        errors.push('Message must be at least 10 characters long');
-    }
-    if (formData.message.length > 512) {
-        errors.push('Message must be no more than 512 characters long');
-    }
-    
-    return errors;
-}
 
-async function handleFormSubmit(event) {
-    event.preventDefault();
-    
-    formData.name = form.elements['user-name'].value.trim();
-    formData.message = form.elements['user-comment'].value.trim();
-    
-    const errors = validateFormData();
-    if (errors.length > 0) {
-        alert(errors.join('\n'));
-        return;
+    validateForm() {
+        const errors = [];
+        const { name, message, rating } = this.formData;
+        const rules = this.validationRules;
+
+        if (!name || name.length < rules.name.min || name.length > rules.name.max) {
+            errors.push(`Ім'я повинно містити від ${rules.name.min} до ${rules.name.max} символів`);
+        }
+
+        if (!message || message.length < rules.message.min || message.length > rules.message.max) {
+            errors.push(`Повідомлення повинно містити від ${rules.message.min} до ${rules.message.max} символів`);
+        }
+
+        if (!rating || rating < rules.rating.min || rating > rules.rating.max) {
+            errors.push(`Будь ласка, оберіть рейтинг від ${rules.rating.min} до ${rules.rating.max} зірок`);
+        }
+
+        return errors;
     }
-    
-    const feedbackData = {
-        name: formData.name,
-        rating: formData.rating,
-        descr: formData.message
-    };
-    
-    try {
-        feedbackFormSubmitBtn.disabled = true;
-        feedbackFormSubmitBtn.textContent = 'Sending...';
+
+    async handleSubmit(event) {
+        event.preventDefault();
         
-        await postFeedback(feedbackData);
+        this.updateFormDataFromInputs();
         
-        localStorage.removeItem(LOCAL_STORAGE_KEY);
-        form.reset();
-        formData = { name: '', message: '', rating: null };
-        updateStarsDisplay(0);
-        handleCloseForm();
-        
-        alert('Feedback sent successfully!');
-        
-    } catch (error) {
-        console.error('Error sending feedback:', error);
-        alert('Error sending feedback. Please try again.');
-    } finally {
-        feedbackFormSubmitBtn.disabled = false;
-        feedbackFormSubmitBtn.textContent = 'Submit';
-    }
-}
+        const errors = this.validateForm();
+        if (errors.length > 0) {
+            this.showErrorMessage(errors.join('\n'));
+            return;
+        }
 
-function addEventListeners() {
-    feedbackFormCloseBtn.addEventListener('click', handleCloseForm);
-    document.addEventListener('keydown', handleEscapeKey);
-    feedbackFormBackdrop.addEventListener('click', handleBackdropClick);
-    form.addEventListener('input', handleInputChange);
-    form.addEventListener('submit', handleFormSubmit);
-    feedbackFormRatingContainer.addEventListener('click', handleRatingClick);
-}
-
-function removeEventListeners() {
-    feedbackFormCloseBtn.removeEventListener('click', handleCloseForm);
-    document.removeEventListener('keydown', handleEscapeKey);
-    feedbackFormBackdrop.removeEventListener('click', handleBackdropClick);
-    form.removeEventListener('input', handleInputChange);
-    form.removeEventListener('submit', handleFormSubmit);
-    feedbackFormRatingContainer.removeEventListener('click', handleRatingClick);
-}
-
-export function openFeedbackForm() {
-    const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (savedData) {
-        formData = { ...formData, ...JSON.parse(savedData) };
-        form.elements['user-name'].value = formData.name || '';
-        form.elements['user-comment'].value = formData.message || '';
-        if (formData.rating) {
-            updateStarsDisplay(formData.rating);
+        try {
+            await this.submitForm();
+        } catch (error) {
+            console.error('Error sending feedback:', error);
+            this.showErrorMessage('Помилка при відправці відгуку. Спробуйте ще раз.');
         }
     }
-    
-    feedbackFormBackdrop.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-    
-    addEventListeners();
+
+    updateFormDataFromInputs() {
+        this.formData.name = this.nameInput?.value.trim() || '';
+        this.formData.message = this.messageInput?.value.trim() || '';
+    }
+
+    async submitForm() {
+        this.setSubmitButtonState(true, 'Відправляється...');
+        
+        try {
+            await this.sendFeedback();
+            
+            this.clearForm();
+            this.clearSavedData();
+            this.closeModal();
+            
+            this.showSuccessMessage('Відгук успішно відправлено!');
+            
+        } finally {
+            this.setSubmitButtonState(false, 'Відправити');
+        }
+    }
+
+    setSubmitButtonState(disabled, text) {
+        if (this.submitBtn) {
+            this.submitBtn.disabled = disabled;
+            this.submitBtn.textContent = text;
+        }
+    }
+
+    clearForm() {
+        this.form?.reset();
+        this.formData = { name: '', message: '', rating: null };
+        this.updateStarsDisplay(0);
+        this.clearErrorStates();
+    }
+
+    clearErrorStates() {
+        this.nameInput?.classList.remove('error');
+        this.messageInput?.classList.remove('error');
+        
+        Object.values(this.errors).forEach(errorElement => {
+            if (errorElement) errorElement.style.display = 'none';
+        });
+    }
+
+    saveData() {
+        try {
+            console.log('Form data auto-saved:', { ...this.formData });
+        } catch (error) {
+            console.error('Error saving form data:', error);
+        }
+    }
+
+    populateForm() {
+        if (this.nameInput) this.nameInput.value = this.formData.name || '';
+        if (this.messageInput) this.messageInput.value = this.formData.message || '';
+        if (this.formData.rating) this.updateStarsDisplay(this.formData.rating);
+    }
+
+    setRating(rating) {
+        if (rating >= 1 && rating <= 5) {
+            this.formData.rating = rating;
+            this.updateStarsDisplay(rating);
+            this.saveData();
+        }
+    }
+
+
+    getFormData() {
+        return { ...this.formData };
+    }
+
+    resetForm() {
+        this.clearForm();
+        this.clearSavedData();
+    }
+
+    destroy() {
+        this.openBtn?.removeEventListener('click', this.openModal);
+        this.closeBtn?.removeEventListener('click', this.closeModal);
+        this.modal?.removeEventListener('click', this.handleBackdropClick);
+        document.removeEventListener('keydown', this.handleEscapeKey);
+        
+        if (this.form) {
+            this.form.removeEventListener('input', this.handleInputChange);
+            this.form.removeEventListener('submit', this.handleSubmit);
+        }
+        
+        this.ratingContainer?.removeEventListener('click', this.handleRatingClick);
+        
+        this.stars.forEach((star, index) => {
+            star.removeEventListener('mouseenter', () => this.handleStarHover(index + 1));
+            star.removeEventListener('mouseleave', () => this.updateStarsDisplay(this.formData.rating));
+        });
+    }
 }
 
-if (feedbackFormBackdrop && getComputedStyle(feedbackFormBackdrop).display !== 'none') {
-    addEventListeners();
+document.addEventListener('DOMContentLoaded', () => {
+    window.feedbackModal = new FeedbackModal();
+});
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = FeedbackModal;
 }

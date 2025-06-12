@@ -1,4 +1,4 @@
-.form-main{
+.form-main {
     border-radius: 16px;
     padding-top: 64px;
     padding-bottom: 64px;
@@ -6,7 +6,6 @@
     position: relative;
     background: #7c3096;
 }
-
 
 .form-main-btn {
     position: absolute;
@@ -19,18 +18,19 @@
     background-color: transparent;
 }
 
-.svg-btn{
+.svg-btn {
     fill: #fff;
     stroke: #fff;
+    stroke-width: 2;
 }
 
-.form-par{
+.form-par {
     font-size: 24px;
     line-height: 130%;
     text-align: center;
 }
 
-.lab-name{
+.lab-name {
     display: flex;
     flex-direction: column;
     font-size: 16px;
@@ -39,7 +39,7 @@
     margin-bottom: 32px;
 }
 
-.form-name{
+.form-name {
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     padding: 8px 12px;
@@ -66,7 +66,7 @@
     border-radius: 12px;
     background-color: transparent;
     padding: 12px;
-    min-width:288px;
+    min-width: 288px;
     width: 100%;
     height: 130px;
     color: #fff;
@@ -74,7 +74,7 @@
     outline: transparent;
 }
 
-.text-inva{
+.text-inva {
     font-size: 12px;
     padding-left: 16px;
     margin-top: 1px;
@@ -92,16 +92,27 @@
     display: block;
 }
 
-.svg-str {
-    fill: #fff;
-    stroke: #fff;
-    stroke-width: 1px;
+.form-str {
+    gap: 8px;
+    margin-bottom: 32px;
+    justify-content: center;
 }
 
-.form-str {
-    gap: 6px;
-    margin-bottom: 32px;
+.star {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    fill: #fff;
+    stroke: #fff;
+    stroke-width: 2;
+  }
+
+.star:hover,
+.star.active {
+    fill: #764191;
+    stroke: #764191;
+    transform: scale(1.1);
 }
+
 
 .form-end-button {
     border-radius: 12px;
@@ -115,9 +126,19 @@
     background: #764191;
     font-weight: 500;
     color: #fff;
+    transition: opacity 0.2s ease;
 }
 
-@media only screen and (min-width: 768px){
+.form-end-button:hover {
+    opacity: 0.9;
+}
+
+.form-end-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media only screen and (min-width: 768px) {
     .form-main {
         border-radius: 16px;
         padding: 64px 32px;
@@ -125,26 +146,26 @@
         height: 688px;
     }
 
-    .form-par{
+    .form-par {
         font-size: 44px;
         margin-bottom: 48px;
     }
 
-    .lab-name{
+    .lab-name {
         font-size: 18px;
         margin-bottom: 24px;
     }
 
-    .form-name{
+    .form-name {
         width: 640px;
     }
 
-    .lab-text{
+    .lab-text {
         font-size: 18px;
         margin-bottom: 24px;
     }
 
-    .form-text{
+    .form-text {
         width: 640px;
         height: 180px;
     }
@@ -155,41 +176,40 @@
 
     .form-end-button {
         width: 340px;
-
     }
 }
 
 @media only screen and (min-width: 1440px) {
-    .form-main{
+    .form-main {
         padding: 64px;
         width: 864px;
         height: 688px;
     }
 
-    .form-par{
+    .form-par {
         font-size: 60px;
         margin-bottom: 48px;
     }
 
-    .lab-name{
+    .lab-name {
         font-size: 18px;
         margin-bottom: 24px;
     }
 
-    .form-name{
+    .form-name {
         width: 736px;
     }
 
-    .lab-text{
+    .lab-text {
         font-size: 18px;
         margin-bottom: 24px;
     }
 
-    .form-text{
+    .form-text {
         width: 736px;
     }
 
     .form-end-button {
-        width: 108px;
+        width: 408px;
     }
 }
