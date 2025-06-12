@@ -16,53 +16,56 @@ html {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0px 8px 0px 20px;
+  padding: 6px 12px 6px 20px;
   gap: 121px;
-  margin: 0 auto;
-}
-
-.logo-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 .logo-icon {
   fill: #ffffff;
 }
-.logo-icon:hover {
-  fill: #a259ff;
-  transform: scale(1.1);
+.logo-link {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  padding: 9px 12px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
-.logo-icon:active {
-  fill: #a259ff;
+.logo-link:hover .logo-icon,
+.logo-link:focus .logo-icon {
+  fill: #9747ff;
   transform: scale(1.1);
 }
 .burger-btn {
+  width: 48px;
+  height: 48px;
+  padding: 12px;
   background: none;
   border: none;
-  cursor: pointer;
-  fill: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
-.burger-btn:active {
-  transform: scale(1.1);
-  opacity: 0.8;
-  fill: #a259ff;
+.burger-btn svg {
+  fill: white;
+  transition: fill 0.3s ease;
 }
-.burger-btn:hover {
+.burger-btn:hover svg,
+.burger-btn:focus svg {
+  fill: #9747ff;
   transform: scale(1.1);
-  opacity: 0.8;
-  fill: #a259ff;
+  opacity: 1;
 }
 .header-list {
   display: none;
 }
-.header-list li:hover {
-  color: #a259ff;
-}
-.header-list li:active {
-  color: #a259ff;
+.header-list li a:hover,
+.header-list li a:focus {
+  color: #9747ff;
+  transform: scale(1.05);
 }
 .mobile-menu {
   position: fixed;
@@ -80,24 +83,18 @@ html {
 .mobile-menu-container {
   width: 100%;
   height: 100%;
-  background-color: #0d0b0b;
+  background-color: #060307;
   padding: 7px 20px;
   display: flex;
   flex-direction: column;
   position: relative;
 }
-.mobile-menu-close {
-  background: transparent;
-  border: none;
-  align-self: flex-end;
-  padding: 0;
-  cursor: pointer;
-}
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  margin-top: 60px;
+  margin-top: 39px;
+  align-items: center;
 }
 .mobile-nav-links a {
   text-decoration: none;
@@ -106,43 +103,41 @@ html {
   font-weight: 500;
   text-align: left;
   transition: color 0.3s ease;
-  margin: 0 auto;
 }
-.mobile-nav-links a:hover {
-  color: #a259ff;
-}
+.mobile-nav-links a:hover,
 .mobile-nav-links a:active {
-  color: #a259ff;
+  color: #9747ff;
 }
 .modal-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 8px 0px 20px;
+  padding: 0px 12px 0px 20px;
   gap: 121px;
-  margin: 0 auto;
+  margin: 0 auto 60px auto;
 }
 .logo-link {
   flex: 1;
 }
 .modal-close {
   fill: white;
-  cursor: pointer;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
-.modal-close:hover {
-  transform: scale(0.9);
-  opacity: 0.8;
-  fill: #a259ff;
-}
-.modal-close:active {
-  transform: scale(0.9);
-  opacity: 0.8;
-  fill: #a259ff;
-}
 .close-menu-btn {
-  background-color: #0d0b0b;
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+  background-color: #060307;
   border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.close-menu-btn:hover svg,
+.close-menu-btn:focus svg {
+  fill: #9747ff;
+  transform: scale(1.1);
+  opacity: 1;
 }
 .header {
   position: fixed;
@@ -152,31 +147,20 @@ html {
   z-index: 1000;
   background-color: #060307;
 }
-@media screen and (min-width: 768px) and (max-width: 1440px) {
+@media screen and (min-width: 768px) and (max-width: 1439px) {
   .burger-btn {
     display: none;
   }
   .header-list {
     display: flex;
-    gap: 32px;
-  }
-  .header-logo {
-    fill: blue;
+    gap: 20px;
   }
   .logo-icon {
     fill: white;
   }
-  .logo-icon:hover {
-    fill: #a259ff;
-    transform: scale(1.1);
-  }
-  .logo-icon:active {
-    fill: #a259ff;
-    transform: scale(1.1);
-  }
   .container-header {
     padding: 11px 64px;
-    gap: 263px;
+    gap: 262px;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -185,18 +169,10 @@ html {
   }
   .header-list {
     display: flex;
-    gap: 32px;
+    gap: 20px;
   }
   .logo-icon {
     fill: white;
-  }
-  .logo-icon:hover {
-    fill: #a259ff;
-    transform: scale(1.1);
-  }
-  .logo-icon:active {
-    fill: #a259ff;
-    transform: scale(1.1);
   }
   .container-header {
     padding: 11px 64px;
