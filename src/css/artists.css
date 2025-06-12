@@ -12,6 +12,7 @@
   flex-wrap: wrap;
   gap: 64px;
   justify-content: center;
+  margin-bottom: 32px;
 }
 .artists-card {
   background-color: #060307;
@@ -56,9 +57,13 @@
   background: none;
   border: none;
   padding: 0;
+  width: 125px;
+  height: 27px;
+  gap: 8px;
 }
 .learn-more-text {
   color: #fff;
+  font-weight: 500;
 }
 .learn-more-icon {
   fill: #fff;
@@ -112,7 +117,6 @@
   }
   .load-more {
     width: 340px;
-    padding-left: 109px;
   }
 }
 @media (min-width: 1440px) {
@@ -127,7 +131,6 @@
   }
   .load-more {
     width: 170px;
-    padding-left: 24px;
   }
   .load-more:focus {
     background-color: #764191;
