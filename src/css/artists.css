@@ -51,12 +51,12 @@
   margin-bottom: 24px;
 }
 .learn-more-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   transition: color 0.3s;
   background: none;
   border: none;
-  padding: 0;
+  padding: 1px 0;
   width: 125px;
   height: 27px;
   gap: 8px;
@@ -77,19 +77,18 @@
 }
 /* Load more button */
 .load-more {
-    margin: 40px auto 0;
+    margin: 0 auto;
+    justify-content: center;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     border-radius: 12px;
     border: none;
-    padding-left: 83px;
+    padding: 10px 24px;
     background-color: #764191; 
     font-weight: 500;
-    font-size: 18px;
     line-height: 150%;
     color: #fff;
-    cursor: pointer;
     transition: background-color 0.3s, opacity 0.3s, box-shadow 0.3s, transform 0.1s;
     box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
                 inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
