@@ -20,15 +20,16 @@
 .f-nav-link > li > a {
   font-weight: 600;
   font-size: 16px;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .f-nav-link > li > a:focus,
 .f-nav-link > li > a:hover {
-  color: #764191;
+  opacity: 0.6;
 }
 
 .f-nav-link > li > a:active {
-  color: #764191;
+  opacity: 0.2;
 }
 
 .footer-logo-hover {
@@ -67,7 +68,7 @@
   height: 40px;
   fill: #fff;
   display: block;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .f-link-icon > svg {
@@ -77,11 +78,11 @@
 
 .f-link-icon:hover,
 .f-link-icon:focus {
-  fill: #764191;
+  opacity: 0.6;
 }
 
 .f-link-icon:active {
-  fill: #764191;
+  opacity: 0.2;
 }
 
 .f-text-privacy {
