@@ -1,0 +1,140 @@
+.section-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+.section-subtitle {
+  font-size: 44px;
+  margin-bottom: 32px;
+}
+.artists-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 64px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+.artists-card {
+  background-color: #060307;
+  overflow: hidden;
+}
+.artist-photo {
+  width: 288px;
+  height: 177px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 16px;
+  display: block;
+  margin-bottom: 24px;
+}
+.artists-genres-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.artists-genre-item {
+  background-color: rgba(255, 255, 255, 0);
+  padding: 4px 10px;
+  text-transform: capitalize;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+}
+.artists-name {
+  font-size: 32px;
+  font-weight: 700; 
+  line-height: 130%;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.artists-description {
+  margin-bottom: 24px;
+}
+.learn-more-btn {
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
+  background: none;
+  border: none;
+  padding: 1px 0;
+  width: 125px;
+  height: 27px;
+  gap: 8px;
+}
+.learn-more-text {
+  color: #fff;
+  font-weight: 500;
+}
+.learn-more-icon {
+  fill: #fff;
+}
+.learn-more-btn:hover,
+.learn-more-btn:focus {
+  opacity: 0.6;
+}
+.learn-more-btn:active {
+  opacity: 0.2;
+}
+/* Load more button */
+.load-more {
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 12px;
+    border: none;
+    padding: 10px 24px;
+    background-color: #764191; 
+    font-weight: 500;
+    line-height: 150%;
+    color: #fff;
+    transition: background-color 0.3s, opacity 0.3s, box-shadow 0.3s, transform 0.1s;
+    box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
+                inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+                inset 0 0 0 1px rgba(6, 3, 7, 0.15),
+                inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+                inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+    width: 288px;
+    height: 47px;
+}
+.load-more:hover {
+ box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05), inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15), inset 0 2px 1px 0 rgba(255, 255, 255, 0.25), inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+ background: #764191;
+ opacity: 0.6;
+ transition: background 0.3s;
+}
+
+/*  Адаптив */
+@media (min-width: 768px) {
+  .artists-gallery {
+    gap: 32px;
+  }
+  .artist-photo {
+    width: 704px;
+    height: 432px;
+  }
+  .load-more {
+    width: 340px;
+  }
+}
+@media (min-width: 1440px) {
+  .artists-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .artist-photo {
+    width: 640px;
+    height: 393px;
+  }
+  .load-more {
+    width: 170px;
+  }
+  .load-more:focus {
+    background-color: #764191;
+    opacity: 1;
+    box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05), inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15), inset 0 2px 1px 0 rgba(255, 255, 255, 0.25), inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+    outline: none;
+}
+}
