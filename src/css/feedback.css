@@ -1,18 +1,18 @@
+/*  */
+
 .feedback-section {
   width: 100%;
-  min-height: auto;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  gap: 10px;
 }
 svg {
   fill: #fff;
   width: 24px;
   height: 24px;
 }
-
 .swiper-container {
   width: 100%;
   overflow: hidden;
@@ -20,7 +20,6 @@ svg {
   flex-grow: 1;
   min-height: 200px;
 }
-
 .swiper-slide {
   background: transparent;
   border-radius: 0;
@@ -35,7 +34,6 @@ svg {
   width: 100% !important;
   box-sizing: border-box;
 }
-
 .swiper-slide .text {
   font-family: 'Epilogue', sans-serif;
   font-weight: 700;
@@ -49,7 +47,6 @@ svg {
   max-width: 90%;
   display: inline-block;
 }
-
 .swiper-slide .user {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
@@ -57,27 +54,22 @@ svg {
   line-height: 1.5;
   color: #fff;
 }
-
 .rating {
   margin-bottom: 32px !important;
   display: flex;
   justify-content: center;
   gap: 3px;
 }
-
 .rating .star,
 .rating .star-empty {
   font-size: 18px;
 }
-
 .star {
   color: #764191;
 }
-
 .star-empty {
   color: #ffffff;
 }
-
 .swiper-buttons {
   position: absolute;
   top: 48px;
@@ -91,7 +83,6 @@ svg {
   pointer-events: none;
   z-index: 20;
 }
-
 /* ПРИХОВУЄМО КНОПКИ ЗА ЗАМОВЧУВАННЯМ (ДЛЯ МОБІЛЬНИХ) */
 .swiper-buttons button {
   display: none;
@@ -108,26 +99,22 @@ svg {
   pointer-events: auto;
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
-
 .swiper-buttons button img {
   width: 16px;
   height: 16px;
   display: block;
 }
-
 .swiper-buttons button:hover {
   background: rgba(6, 3, 7, 0.8);
   border-color: #fff;
 }
-
 .pagination {
   gap: 9px;
-  /* margin-top: 0; */
+  /* margin-top: 16px; */
   padding: 10px;
   display: flex;
   justify-content: center;
 }
-
 .pagination span {
   width: 8px;
   height: 8px;
@@ -137,11 +124,9 @@ svg {
   cursor: pointer;
   transition: background 0.3s;
 }
-
 .pagination .active {
   background: #fff;
 }
-
 .loading-slide {
   display: flex;
   justify-content: center;
@@ -149,7 +134,6 @@ svg {
   background-color: transparent;
   color: #fff;
 }
-
 .loader-wrapper {
   display: flex;
   justify-content: center;
@@ -158,22 +142,10 @@ svg {
   height: 100%;
 }
 
-.loader {
-  width: 40px;
-  height: 40px;
-  border: 4px solid #fff;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
-
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
@@ -189,40 +161,33 @@ svg {
     gap: 16px;
     min-height: 300px;
   }
-
   .swiper-container {
-    min-height: 220px;
+    min-height: 254px;
   }
-
   .swiper-slide {
     min-height: 200px;
   }
-
   .swiper-slide .text {
     font-size: 20px;
     max-width: 440px;
     display: inline-block;
   }
-
   .swiper-slide .user {
-    font-size: 17px;
+    font-size: 18px;
+    margin-bottom: 16px;
   }
-
   .rating {
     margin-bottom: 20px;
     gap: 4px;
   }
-
   .rating .star,
   .rating .star-empty {
     font-size: 19px;
   }
-
   .swiper-buttons {
     top: 59px;
     padding: 0 44px;
   }
-
   .swiper-buttons button {
     display: flex;
     width: 48px !important;
@@ -233,30 +198,25 @@ svg {
     transition: background-color 0.3s, opacity 0.3s;
     z-index: 10;
   }
-
   .swiper-buttons button img {
     width: 20px;
     height: 20px;
   }
-
   .pagination {
     gap: 10px;
   }
-
   .pagination span {
     width: 8px;
     height: 8px;
     bottom: 91px;
     position: relative;
   }
-
   .loader {
     width: 44px;
     height: 44px;
     border: 4px solid #fff;
   }
 }
-
 /*
 * ----------------------------------------------------
 * СТИЛІ ДЛЯ ДЕСКТОПІВ (min-width: 1440px)
@@ -267,15 +227,12 @@ svg {
     min-height: 397.89px;
     gap: 16px;
   }
-
   .swiper-container {
     min-height: 250px;
   }
-
   .swiper-slide {
     min-height: 200px;
   }
-
   .swiper-slide .text {
     font-size: 24px;
     line-height: 1.5;
@@ -284,44 +241,35 @@ svg {
     max-width: 770px;
     display: inline-block;
   }
-
   .swiper-slide .user {
     font-size: 18px;
     margin-bottom: 72px;
   }
-
   .rating {
     margin-bottom: 20px;
     gap: 5px;
   }
-
   .rating .star,
   .rating .star-empty {
     font-size: 20px;
   }
-
   .swiper-buttons {
     top: 60px;
     padding: 0 48px;
   }
-
   .swiper-buttons button {
     width: 48px;
     height: 48px;
     font-size: 24px;
   }
-
   .swiper-buttons button img {
     width: 24px;
     height: 24px;
   }
-
   .pagination {
     gap: 10px;
-    /* bottom: 112px; */
     position: relative;
   }
-
   .loader {
     width: 48px;
     height: 48px;
