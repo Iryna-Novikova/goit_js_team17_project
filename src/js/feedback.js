@@ -18,7 +18,9 @@ let swiperInstance;
 
 async function fetchFeedbacks() {
     try {
-        wrapper.innerHTML = '<div class="swiper-slide loading">Завантаження відгуків...</div>';
+        // wrapper.innerHTML = '<div class="swiper-slide loading">Завантаження відгуків...</div>';
+
+
         const response = await axios.get('https://sound-wave.b.goit.study/api/feedbacks', {
             params: {
                 limit: 3,
