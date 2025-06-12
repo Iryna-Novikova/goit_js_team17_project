@@ -6,61 +6,49 @@ import { showLoaderModal, hideLoaderModal } from './show-hide-functions.js';
 function blockScroll() {
   refs.body.style.overflow = 'hidden';
 }
-
 function unblockScroll() {
   refs.body.style.overflow = '';
 }
-
 function onEscPress(e) {
   if (e.key === 'Escape') {
     closeArtistModal();
   }
 }
-
 function onBackdropClick(e) {
   if (e.target === refs.artistsModalBackdrop) {
     closeArtistModal();
+    const genresList = genres.join(', ');
   }
 }
 function onCloseBtnClck() {
   closeArtistModal();
 }
-
 export function openArtistModal(id) {
   refs.artistsModalBackdrop.classList.add('is-open');
   blockScroll();
   document.addEventListener('keydown', onEscPress);
   refs.artistsModalBackdrop.addEventListener('click', onBackdropClick);
   refs.artistsModalCloseBtn.addEventListener('click', onCloseBtnClck);
-  fetchArtistDetails(id, genres);
+  fetchArtistDetails(id);
 }
-
 async function fetchArtistDetails(id) {
   showLoaderModal();
-  // Сховати контент і кнопку закриття
-  refs.artistsModalCloseBtn.classList.add('visually-hidden');
-  refs.artistInfoElm.classList.add('visually-hidden');
-
   try {
     const artistData = await getArtistCard(id);
-    createArtistCard(artistData, genres);
+    createArtistCard(artistData);
   } catch (error) {
-    console.error('Помилка при завантаженні даних артиста:', error);
+    console.error('Error loading artist data:', error);
 
     refs.artistInfoElm.innerHTML = `
-        <p class="error-msg">Не вдалося завантажити дані артиста. Спробуйте пізніше.</p>
+        <p class="error-msg">Artist info failed to load. Please try again later.</p>
       `;
   }
-  // Показати контент і хрестик після завантаження
-  refs.artistInfoElm.classList.remove('visually-hidden');
-  refs.artistsModalCloseBtn.classList.remove('visually-hidden');
-
   hideLoaderModal();
 }
 
 export function closeArtistModal() {
   refs.artistsModalBackdrop.classList.remove('is-open');
-
+  // Видаляємо обробники подій
   document.removeEventListener('keydown', onEscPress);
   refs.artistsModalBackdrop.removeEventListener('click', onBackdropClick);
   refs.artistsModalCloseBtn.removeEventListener('click', onCloseBtnClck);

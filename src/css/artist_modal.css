@@ -54,33 +54,25 @@
   padding: 0;
   display: flex;
   border-radius: 12px;
-
-  width: 32px;
-  height: 32px;
   align-items: center;
   justify-content: center;
+  /* анімація */
   box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
-    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
-    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
-  background: #f2f2f2;
+    inset 0 -2px 1px 0 rgba(6, 3, 7, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  background: #060307;
   transition: transform 0.3s ease;
   z-index: 2002;
-  color: #060307;
+  color: #fff;
 }
-.artists-modal-close-btn {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  will-change: transform, box-shadow;
-}
-.artists-modal-close-btn:hover {
+
+.artists-modal-close-btn:hover,
+.artists-modal-close-btn:focus {
   animation: jumpScale 0.5s forwards;
-  box-shadow: 0px 12px 25px #764191; /* яскрава тінь для ефекту */
+  box-shadow: 0px 12px 25px #764191;
 }
 .artists-modal-close-btn .icon-close {
-  width: 16px;
-  height: 16px;
   fill: currentColor;
 }
 
@@ -312,6 +304,7 @@
   visibility: hidden; /* приховує елемент, але зберігає місце */
   pointer-events: none; /* блокує можливість кліку або наведення */
 }
+
 @media screen and (min-width: 768px) {
   .artist-modal-content-wrapper {
     padding: 64px 24px;

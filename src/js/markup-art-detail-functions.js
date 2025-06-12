@@ -21,7 +21,7 @@ export function artistCardMarkup(artist) {
 
   const genresListMarkup = `
     <ul class="artists-genres-list">
-      ${genres
+      ${genre
         .map(genre => `<li class="artists-genre-item">${genre}</li>`)
         .join(' ')}
     </ul>`;
