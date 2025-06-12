@@ -1,4 +1,4 @@
-// тут мають бути фннкції по розмітці карток артистів для секції артисти. 
+// тут мають бути фннкції по розмітці карток артистів для секції артисти.
 import { refs } from './refer.js';
 
 function createArtistCard(artist) {
@@ -12,14 +12,17 @@ function createArtistCard(artist) {
 
   const genresMarkup =
     `<ul class="artists-genres-list">` +
-    genres.map(genre => `<li class="artists-genre-item">${genre}</li>`).join(' ') +
+    genres
+      .map(genre => `<li class="artists-genre-item">${genre}</li>`)
+      .join(' ') +
     `</ul>`;
 
   const descriptionText = shortDescription
-    ? shortDescription.slice(0, 60) + '...' : 'No description available.';
-  
+    ? shortDescription.slice(0, 60) + '...'
+    : 'No description available.';
+
   // const genresString = encodeURIComponent(JSON.stringify(genres));
-  
+
   return `
     <li class="artists-card">
       <img src="${photo}" alt="${name}" class="artist-photo" />

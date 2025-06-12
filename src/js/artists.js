@@ -1,6 +1,11 @@
 import { refs } from './refer.js';
 import { createArtistsList } from './markup-artists-functions.js';
-import { showLoadMoreBtn, hideLoadMoreBtn,  showLoaderArtists,  hideLoaderArtists } from './show-hide-functions.js';
+import {
+  showLoadMoreBtn,
+  hideLoadMoreBtn,
+  showLoaderArtists,
+  hideLoaderArtists,
+} from './show-hide-functions.js';
 import { getArtists } from './artists-api.js';
 import { openArtistModal } from './artist-detail-modal';
 
@@ -10,26 +15,26 @@ let totalPages;
 
 loadArtistsList();
 
-async function loadArtistsList () {
+async function loadArtistsList() {
   try {
-      hideLoadMoreBtn();
-      showLoaderArtists();
-        const data = await getArtists(currentPage, limit);
-        const newArtists = data.artists;
-        const totalFetchedArtists = data.totalArtists;
+    hideLoadMoreBtn();
+    showLoaderArtists();
+    const data = await getArtists(currentPage, limit);
+    const newArtists = data.artists;
+    const totalFetchedArtists = data.totalArtists;
 
-        createArtistsList(newArtists);
-        totalPages = Math.ceil (totalFetchedArtists / limit);
-        if (currentPage < totalPages) {
-          showLoadMoreBtn();
-          currentPage++;
-        } else {
-          hideLoadMoreBtn();
-        }
-    } catch (error) {
-    refs.artistsListElm.innerHTML = `Помилка завантаження артистів: ${error}`
-  };
-      hideLoaderArtists();
+    createArtistsList(newArtists);
+    totalPages = Math.ceil(totalFetchedArtists / limit);
+    if (currentPage < totalPages) {
+      showLoadMoreBtn();
+      currentPage++;
+    } else {
+      hideLoadMoreBtn();
+    }
+  } catch (error) {
+    refs.artistsListElm.innerHTML = `Помилка завантаження артистів: ${error}`;
+  }
+  hideLoaderArtists();
 }
 
 function hndLoadMoreClick() {
