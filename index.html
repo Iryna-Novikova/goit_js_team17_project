@@ -15,8 +15,9 @@
 
     <!--підключення стилів-->
     <script type="module" crossorigin src="/goit_js_team17_project/cd/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit_js_team17_project/cd/assets/vendor-B2YOV0tR.js">
-    <link rel="stylesheet" crossorigin href="/goit_js_team17_project/cd/assets/index-DoyhMUcv.css">
+    <link rel="modulepreload" crossorigin href="/goit_js_team17_project/cd/assets/vendor-kRNmL_n_.js">
+    <link rel="stylesheet" crossorigin href="/goit_js_team17_project/cd/assets/vendor-Ox6CiG2N.css">
+    <link rel="stylesheet" crossorigin href="/goit_js_team17_project/cd/assets/index-CGwV6hHB.css">
   </head>
 
   <body>
@@ -181,10 +182,37 @@
   </div>
 </section>
 
-      <section id="reviews">
+      <section class="feedback-container" id="feedback">
   <div class="container">
-    <!-- ваш код тут -->
+    <div class="feedback-section">
+      <div class="swiper-container">
+        <div class="swiper-wrapper" id="feedback-wrapper">
+          <div class="loader visually-hidden" data-feedback-loader>
+            <div class="vinyl-loader">
+              <div class="vinyl-center"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pagination" id="pagination"></div>
+      <div class="swiper-buttons">
+        <button id="prevBtn" aria-label="Попередній відгук">
+          <svg class="more-btn-icon">
+            <use href="/goit_js_team17_project/cd/assets/icons-Dpxc_yEu.svg#icon-left-arrow-reviews"></use>
+          </svg>
+        </button>
+        <button class="disabled" id="nextBtn" aria-label="Наступний відгук">
+          <svg class="more-btn-icon">
+            <use href="/goit_js_team17_project/cd/assets/icons-Dpxc_yEu.svg#icon-right-arrow-reviews"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
+  <!-- /* Button Leav Feedbacks */ -->
+  <!-- <button class="leave-feedbacks" type="button" id="leave-feedbacks">
+    Leave feedback
+  </button> -->
 </section>
 
       <div class="backdrop" data-feedback-form>
