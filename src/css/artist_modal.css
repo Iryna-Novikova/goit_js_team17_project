@@ -1,3 +1,4 @@
+/* ======= BACKDROP (затемнення фону) ======= */
 .backdrop {
   position: fixed;
   top: 0;
@@ -9,24 +10,29 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+  opacity: 0; /* прихований при завантаженні */
+  visibility: hidden; /* не видимий */
+  pointer-events: none; /* не приймає події */
   overflow-y: auto;
   padding: 64px 16px;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Активний стан модалки */
 .backdrop.is-open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-/* Модальне вікно */
+/* ======= ВМІСТ МОДАЛКИ ======= */
 .artist-modal-content-wrapper {
   overflow-y: auto;
+  overflow-x: hidden;
   max-height: 90vh;
+  scrollbar-width: thin;
+  scrollbar-color: #555555 #333333;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -35,47 +41,49 @@
   border-radius: 16px;
   width: auto;
   position: relative;
-  max-height: 90vh;
   background: #060307;
   padding: 52px 8px;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Анімація появи модального контенту */
 .backdrop.is-open .artist-modal-info {
   transform: scale(1);
 }
+
+/* ======= КНОПКА ЗАКРИТТЯ ======= */
 .artists-modal-close-btn {
   position: absolute;
   top: 16px;
   right: 16px;
-  background: none;
+  background: #060307;
   border: none;
-  cursor: pointer;
+  border-radius: 12px;
   padding: 0;
   display: flex;
-  border-radius: 12px;
   align-items: center;
   justify-content: center;
-  /* анімація */
-  box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
-    inset 0 -2px 1px 0 rgba(6, 3, 7, 0.05),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.1);
-  background: #060307;
-  transition: transform 0.3s ease;
+  cursor: pointer;
   z-index: 2002;
   color: #fff;
+  transition: transform 0.3s ease;
+  box-shadow: 0 1px 2px rgba(6, 3, 7, 0.05),
+    inset 0 -2px 1px rgba(6, 3, 7, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
+/* Ефект наведення на кнопку */
 .artists-modal-close-btn:hover,
 .artists-modal-close-btn:focus {
   animation: jumpScale 0.5s forwards;
   box-shadow: 0px 12px 25px #764191;
 }
+
 .artists-modal-close-btn .icon-close {
   fill: currentColor;
 }
 
+/* ======= ІМ'Я АРТИСТА ======= */
 .artist-name {
   font-weight: 700;
   font-size: 20px;
@@ -83,219 +91,217 @@
   text-align: center;
   margin-bottom: 16px;
 }
+
+/* ======= ІНФОРМАЦІЯ ПРО АРТИСТА ======= */
 .artist-info {
   display: flex;
   flex-direction: column;
   gap: 32px;
   margin-bottom: 16px;
 }
+
 .artist-photo {
   width: 100%;
+  height: 167px;
   object-fit: cover;
   object-position: top center;
-  height: 167px;
   border-radius: 16px;
-  object-fit: cover;
   margin: 0 auto;
 }
+
+/* ======= ПРО АРТИСТА (біографія, жанри тощо) ======= */
 .artist-about {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
+
 .artist-about-part {
   display: flex;
-  gap: 16px;
   flex-direction: column;
+  gap: 16px;
 }
+
 .artist-category-info {
   display: flex;
   flex-direction: column;
 }
-.artist-category-name,
+
+.artist-category-name {
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
 .artist-category-text,
 .artist-category-text-biography {
   font-size: 18px;
   line-height: 1.5;
-}
-.artist-category-name {
-  font-weight: 600;
-}
-.artist-category-text {
   font-weight: 400;
 }
+
 .artist-category-text-biography {
-  line-height: 1.5;
   height: 297px;
   overflow-y: auto;
   padding-right: 8px;
   scrollbar-width: thin;
   scrollbar-color: #555555 #333333;
 }
+
+/* ======= ЖАНРИ ======= */
 .artists-genres-list {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
 }
+
 .artists-genre-item {
   font-size: 16px;
   font-weight: 600;
   padding: 4px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 6px;
-  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0);
 }
+
+/* ======= АЛЬБОМИ ======= */
 .albums-header {
   font-weight: 700;
   font-size: 24px;
   margin-bottom: 16px;
   align-self: flex-start;
 }
+
 .albums-list {
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
+
 .albums-list > li {
+  background: #1e1c1f;
   border-radius: 16px;
   padding: 14px 11px;
   width: 100%;
-  background: #1e1c1f;
 }
+
+/* ======= ТРЕКИ В АЛЬБОМІ ======= */
 .album-name {
   font-weight: 600;
   font-size: 16px;
   margin-bottom: 12px;
 }
+
 .tracks-title {
   display: flex;
   align-items: center;
   gap: 16px;
-  border-radius: 8px;
-  padding: 4px 12px;
-  width: 100%;
-  height: 20px;
-  font-weight: 600;
   font-size: 8px;
+  font-weight: 600;
+  padding: 4px 12px;
   background: rgba(255, 255, 255, 0.05);
-  text-align: left;
+  border-radius: 8px;
 }
 
-.tracks-title > li {
+.tracks-title li {
   list-style: none;
-  margin: 0;
-  padding: 0;
-  text-align: left;
 }
 
 .tracks-title li:first-child {
   flex: 3;
   width: 97px;
 }
-
 .tracks-title li:nth-child(2) {
   flex: 2;
   width: 74px;
   text-align: center;
 }
-
 .tracks-title li:nth-child(3) {
   flex: 1;
   width: 24px;
   text-align: center;
 }
 
+/* ======= Список треків ======= */
 .tracks-list {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  border-radius: 8px;
-  overflow-y: auto;
   max-height: 460px;
+  overflow-y: auto;
+  border-radius: 8px;
   scrollbar-width: thin;
   scrollbar-color: #555555 #333333;
 }
+
 .track-item {
   display: flex;
   align-items: center;
   gap: 16px;
   padding: 8px 12px;
   border-radius: 8px;
-  width: 100%;
   height: 40px;
   transition: background-color 0.2s ease;
 }
+
 .track-item:nth-child(even) {
   background: rgba(255, 255, 255, 0.1);
 }
+
 .track-item:hover {
   background: rgba(240, 237, 237, 0.564);
 }
-.track-title {
-  flex: 3;
-  font-weight: 400;
-  font-size: 12px;
-  width: 97px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  text-align: left;
-}
 
+.track-title,
 .track-title p {
   flex: 3;
-  font-weight: 400;
   font-size: 12px;
+  font-weight: 400;
   width: 97px;
-  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .track-time {
   flex: 2;
   width: 74px;
-  font-weight: 400;
   font-size: 12px;
   text-align: center;
 }
+
 .track-movie {
   flex: 1;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
+
+/* ======= Іконка YouTube (у треках) ======= */
 .modal-youtube-icon {
   fill: #fff;
 }
-.artist-modal-detail-label {
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 1.5;
-}
-.artist-modal-detail-value {
-  font-weight: 400;
-}
 .youtube-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 24px;
   height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   border-radius: 4px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  flex-shrink: 0;
-}
-.track-movie:hover,
-.track-movie:focus {
-  box-shadow: 0px 10px 18px #e10303;
-  border-radius: 5px;
+  transition: background-color 250ms;
 }
 .youtube-link .icon-play {
   fill: currentColor;
   width: 24px;
   height: 24px;
 }
+.track-movie:hover,
+.track-movie:focus {
+  box-shadow: 0px 10px 18px #e10303;
+  border-radius: 5px;
+}
+
+/* ======= Якщо альбомів або треків немає ======= */
 .no-tracks-message,
 .no-albums-message {
   font-size: 16px;
@@ -303,24 +309,25 @@
   text-align: center;
   padding: 20px;
 }
+
+/* ======= Приховування відео при відсутності ======= */
 .movie-hidden {
-  visibility: hidden; /* приховує елемент, але зберігає місце */
-  pointer-events: none; /* блокує можливість кліку або наведення */
+  visibility: hidden;
+  pointer-events: none;
 }
 
+/* ======= MEDIA QUERIES ======= */
 @media screen and (min-width: 768px) {
   .artist-modal-content-wrapper {
     padding: 64px 24px;
   }
   .artists-modal-close-btn {
-    top: 16px;
     right: 48px;
   }
-
   .artist-modal-inner {
-    align-items: flex-start;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
   }
   .artist-about {
     gap: 24px;
@@ -333,10 +340,9 @@
     margin-bottom: 48px;
   }
   .artist-about-part {
-    display: flex;
-    gap: 24px;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 24px;
   }
   .artist-about-part-left {
     width: 146px;
@@ -344,62 +350,48 @@
   .artist-photo {
     height: 402px;
   }
-  .artists-genre-item {
-    font-size: 16px;
-  }
   .albums-list {
     flex-direction: row;
     flex-wrap: wrap;
-
-    justify-content: flex-start;
-    align-items: flex-start; /* Важливо для різновисоких елементів */
+    align-items: flex-start;
   }
   .albums-list > li {
     width: calc((100% - 32px) / 2);
-    min-height: 100px; /* Мінімальна висота */
-    height: auto; /* Автовисота замість фіксованої */
-    flex-direction: column;
+    height: auto;
+    min-height: 100px;
   }
   .artist-category-text-biography {
     height: 108px;
   }
 }
+
 @media screen and (min-width: 1440px) {
   .artist-modal-content-wrapper {
     width: 1312px;
     padding: 64px;
   }
   .artists-modal-close-btn {
-    top: 16px;
     right: 24px;
   }
-
   .artist-info {
-    display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
     gap: 64px;
     margin-bottom: 48px;
   }
   .artist-photo {
-    height: 354px;
     width: 576px;
+    height: 354px;
     margin: 0;
   }
   .artist-about {
     width: 576px;
-    display: flex;
-    flex-wrap: wrap;
     gap: 24px;
-  }
-  .artist-about-part-left {
-    width: 146px;
-  }
-  .artist-category-text-biography {
-    height: 135px;
+    flex-wrap: wrap;
   }
   .albums-list > li {
     width: calc((100% - 32px * 3) / 4);
+  }
+  .artist-category-text-biography {
+    height: 135px;
   }
 }
