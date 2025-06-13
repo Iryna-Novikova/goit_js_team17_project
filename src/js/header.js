@@ -37,4 +37,3 @@ function onNavClick(e) {
 }
 
 refs.headerBurger.addEventListener('click', showMobileMenu);
-refs.modalHeaderCloseBtn.addEventListener('click', hideMobileMenu);
