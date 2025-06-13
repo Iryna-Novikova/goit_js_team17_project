@@ -8,11 +8,7 @@
   align-items: center;
   position: relative;
 }
-/* svg {
-  fill: #fff;
-  width: 24px;
-  height: 24px;
-} */
+
 .more-btn-icon {
   fill: #fff;
   width: 24px;
@@ -144,13 +140,13 @@
   background-color: transparent;
   color: #fff;
 }
-.loader-wrapper {
+/* .loader-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-}
+} */
 /* Button Leav Feedbacks */
 /* .leave-feedbacks {
   font-family: 'IBM Plex Sans', sans-serif;
@@ -253,11 +249,11 @@
     bottom: 91px;
     position: relative;
   }
-  .loader {
+  /* .loader {
     width: 44px;
     height: 44px;
     border: 4px solid #fff;
-  }
+  } */
   /* Button Leav Feedbacks */
   /* .leave-feedbacks {
     width: 158px;
@@ -317,11 +313,11 @@
     gap: 10px;
     position: relative;
   }
-  .loader {
+  /* .loader {
     width: 48px;
     height: 48px;
     border: 5px solid #fff;
-  }
+  } */
   /* Button Leav Feedbacks */
   /* .leave-feedbacks {
     width: 177px;
