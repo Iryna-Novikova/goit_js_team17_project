@@ -28,7 +28,7 @@ function createArtistCard(artist) {
       <p class="artists-description">${descriptionText}</p>
       <button class="learn-more-btn" data-id="${id}" type="button">
         <span class="learn-more-text">Learn More</span>
-        <svg class="learn-more-icon" viewBox="0 0 31 32" width="24" height="24">
+        <svg class="learn-more-icon" viewBox="0 0 31 32" width="24" height="25">
           <use href="/img/icons.svg#icon-right-caret-learn-more"></use>
         </svg>
       </button>

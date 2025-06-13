@@ -4,7 +4,7 @@ export const refs = {
   modalHeaderCloseBtn: document.querySelector('.close-menu-btn'),
 
   modalHeader: document.querySelector('[data-menu]'), // мобільне меню
-  logoLinkMenu: document.querySelector('.logo-link'), // логотип в моб. меню
+//   logoLinkMenu: document.querySelector('.logo-link'), // логотип в моб. меню
   mobileNavLinks: document.querySelector('.mobile-nav-links'), // посилання в моб. меню
 
   // Artists Section

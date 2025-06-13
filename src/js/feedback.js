@@ -4,10 +4,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Swiper from 'swiper';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+// import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import axios from 'axios';
 import 'css-star-rating/css/star-rating.min.css';
-
+import {hideLoaderFeedback, showLoaderFeedback} from './show-hide-functions.js'
 
 
 
@@ -17,6 +17,7 @@ const paginationContainer = document.getElementById('pagination');
 let swiperInstance;
 
 async function fetchFeedbacks() {
+    showLoaderFeedback();
     try {
         const response = await axios.get('https://sound-wave.b.goit.study/api/feedbacks', {
             params: {
@@ -46,6 +47,7 @@ async function fetchFeedbacks() {
         console.error('Помилка при завантаженні відгуків', err);
         showErrorMessage();
     }
+    hideLoaderFeedback();
 }
 
 function renderFeedbacks(feedbacks) {

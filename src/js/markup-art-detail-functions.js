@@ -20,9 +20,9 @@ export function artistCardMarkup(artist) {
   } = artist;
 
   const genresListMarkup = `
-    <ul class="artists-genres-list">
+    <ul class="artist-genres-list">
       ${genres
-        .map(genre => `<li class="artists-genre-item">${genre}</li>`)
+        .map(genre => `<li class="artist-genre-item">${genre}</li>`)
         .join(' ')}
     </ul>`;
 
@@ -36,7 +36,7 @@ export function artistCardMarkup(artist) {
   return `
     <h5 class="epilogue artist-name">${name}</h5>
     <div class="artist-info">
-      <img class="artist-photo" src="${photo}" alt="${name} photo" />
+      <img class="artist-photo-modal" src="${photo}" alt="${name} photo" />
       <div class="artist-about">
       <div class="artist-about-part">
         <div class="artist-category-info artist-about-part-left">
