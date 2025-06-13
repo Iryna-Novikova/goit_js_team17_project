@@ -17,7 +17,7 @@
     <script type="module" crossorigin src="/goit_js_team17_project/cd/index.js"></script>
     <link rel="modulepreload" crossorigin href="/goit_js_team17_project/cd/assets/vendor-kRNmL_n_.js">
     <link rel="stylesheet" crossorigin href="/goit_js_team17_project/cd/assets/vendor-Ox6CiG2N.css">
-    <link rel="stylesheet" crossorigin href="/goit_js_team17_project/cd/assets/index-CGwV6hHB.css">
+    <link rel="stylesheet" crossorigin href="/goit_js_team17_project/cd/assets/index-ZTkmuYdN.css">
   </head>
 
   <body>
@@ -37,7 +37,7 @@
       <ul class="header-list">
         <li><a class="header-link" href="#artists">Artists</a></li>
         <li><a class="header-link" href="#about_us">About Us</a></li>
-        <li><a class="header-link" href="#reviews">Reviews</a></li>
+        <li><a class="header-link" href="#feedback">Reviews</a></li>
       </ul>
     </nav>
   </div>
@@ -60,7 +60,7 @@
       <ul class="mobile-nav-list">
         <li><a class="mobile-nav-link" href="#artists">Artists</a></li>
         <li><a class="mobile-nav-link" href="#about_us">About Us</a></li>
-        <li><a class="mobile-nav-link" href="#reviews">Reviews</a></li>
+        <li><a class="mobile-nav-link" href="#feedback">Reviews</a></li>
       </ul>
     </nav>
   </div>
@@ -95,22 +95,25 @@
 
       <section id="artists">
   <div class="container">
-   <h2 class="section-title">Artists</h2>
-  <h3 class="section-subtitle epilogue">Explore Your New Favorite Artists</h3>
-   <ul class="artists-gallery" data-artist-gallery></ul>
-  <button type="button" class="load-more visually-hidden " data-btn-load-more>
-    Load More
-   <svg width="24" height="24" aria-hidden="true">
-    <use href="/goit_js_team17_project/cd/assets/icons-Dpxc_yEu.svg#icon-down-arrow-load-more" fill="#fff"></use>
-  </svg></button>
+    <h2 class="section-title">Artists</h2>
+    <h3 class="section-subtitle epilogue">Explore Your New Favorite Artists</h3>
+    <ul class="artists-gallery" data-artist-gallery></ul>
 
-  <div class="loader visually-hidden" data-artist-loader>
-   <div class="vinyl-loader">
-     <div class="vinyl-center"></div>
-   </div>
-</div>
+    <button type="button" class="load-more visually-hidden" data-btn-load-more>
+      Load More
+      <svg width="24" height="24" aria-hidden="true">
+        <use href="/goit_js_team17_project/cd/assets/icons-Dpxc_yEu.svg#icon-down-arrow-load-more" fill="#fff"></use>
+      </svg>
+    </button>
+
+    <div class="loader visually-hidden" data-artist-loader>
+      <div class="vinyl-loader">
+        <div class="vinyl-center"></div>
+      </div>
+    </div>
   </div>
 </section>
+
       <div class="backdrop" data-artists-modal>
   <div class="container artist-modal-content-wrapper">
     <button
@@ -215,7 +218,7 @@
   </button> -->
 </section>
 
-      <div class="backdrop" data-feedback-form>
+      <div class="backdrop visually-hidden" data-feedback-form>
   <form>
     <!-- ваш код тут -->
   </form>
