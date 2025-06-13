@@ -1,6 +1,6 @@
 // тут мають бути фннкції по розмітці карток артистів для секції артисти. 
 import { refs } from './refer.js';
-import icon from './img/icons.svg';
+import icon from '../img/icons.svg';
 
 function createArtistCard(artist) {
   const {
