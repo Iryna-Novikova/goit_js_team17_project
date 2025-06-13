@@ -6,7 +6,7 @@ import 'swiper/css/pagination';
 import Swiper from 'swiper';
 // import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import axios from 'axios';
-import 'css-star-rating/css/star-rating.min.css';
+// import 'css-star-rating/css/star-rating.min.css';
 import {hideLoaderFeedback, showLoaderFeedback} from './show-hide-functions.js'
 import { showAlert } from './info-message.js';
 
