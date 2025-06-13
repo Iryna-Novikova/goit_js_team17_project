@@ -89,7 +89,7 @@
   gap: 32px;
   margin-bottom: 16px;
 }
-.artist-photo {
+.artist-photo-modal {
   width: 100%;
   object-fit: cover;
   object-position: top center;
@@ -132,12 +132,12 @@
   scrollbar-width: thin;
   scrollbar-color: #555555 #333333;
 }
-.artists-genres-list {
+.artist-genres-list {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
 }
-.artists-genre-item {
+.artist-genre-item {
   font-size: 16px;
   font-weight: 600;
   padding: 4px 10px;
@@ -340,10 +340,10 @@
   .artist-about-part-left {
     width: 146px;
   }
-  .artist-photo {
+  .artist-photo-modal {
     height: 402px;
   }
-  .artists-genre-item {
+  .artist-genre-item {
     font-size: 16px;
   }
   .albums-list {
@@ -379,7 +379,7 @@
     gap: 64px;
     margin-bottom: 48px;
   }
-  .artist-photo {
+  .artist-photo-modal {
     height: 354px;
     width: 576px;
     margin: 0;
