@@ -11,6 +11,27 @@
     z-index: 999;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
 .form-main {
     border-radius: 16px;
     padding-top: 64px;
@@ -105,25 +126,24 @@
     display: block;
 }
 
-.form-str {
+.stars {
     gap: 8px;
     margin-bottom: 32px;
     justify-content: center;
 }
 
-.star {
+.stars i {
+    color: #fff;
+    font-size: 31px;
     cursor: pointer;
     transition: all 0.2s ease;
-    fill: #fff;
-    stroke: #fff;
-    stroke-width: 2;
 }
 
-.star.active {
-    fill: #764191;
-    stroke: #764191;
-    transform: scale(1.1);
+.stars i.active{
+    color: #764191;
 }
+
+
 
 
 

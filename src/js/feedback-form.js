@@ -246,3 +246,25 @@ class FeedbackModal {
 document.addEventListener('DOMContentLoaded', () => {
   window.feedbackModal = new FeedbackModal();
 });
+
+const stars = document.querySelectorAll(".stars i")
+
+stars.forEach((star, index1) => {
+  star.addEventListener("click", () => {
+    stars.forEach((star, index2) => {
+      index1 >= index2 ? star.classList.add("active") : star.classList.remove("active");
+    })
+  })
+})
+
+export function showAlert(message, pos = 'topRight') {
+    iziToast.show({
+        title: '',
+        message: message,
+        backgroundColor: 'rgb(118, 65, 145)',
+        messageColor: 'rgb(255, 255, 255)',
+        position: pos,
+    });
+}
+import { showAlert } from './info-message.js';
+import '@fortawesome/fontawesome-free/css/all.min.css';
