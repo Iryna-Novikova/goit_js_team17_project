@@ -8,6 +8,7 @@ import Swiper from 'swiper';
 import axios from 'axios';
 import 'css-star-rating/css/star-rating.min.css';
 import {hideLoaderFeedback, showLoaderFeedback} from './show-hide-functions.js'
+import { showAlert } from './info-message.js';
 
 
 
@@ -44,7 +45,7 @@ async function fetchFeedbacks() {
         initPaginationControls();
 
     } catch (err) {
-        console.error('Помилка при завантаженні відгуків', err);
+        showAlert(`Помилка при завантаженні відгуків ${err}`, 'bottomCenter');
         showErrorMessage();
     }
     hideLoaderFeedback();
@@ -159,6 +160,5 @@ function updatePagination() {
         nextBtn.classList.remove('disabled');
     }
 }
-
 
 document.addEventListener('DOMContentLoaded', fetchFeedbacks);
