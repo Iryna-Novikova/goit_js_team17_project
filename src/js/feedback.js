@@ -10,9 +10,6 @@ import 'css-star-rating/css/star-rating.min.css';
 import {hideLoaderFeedback, showLoaderFeedback} from './show-hide-functions.js'
 import { showAlert } from './info-message.js';
 
-
-
-
 const wrapper = document.getElementById('feedback-wrapper');
 const paginationContainer = document.getElementById('pagination');
 let swiperInstance;
@@ -62,7 +59,7 @@ function renderFeedbacks(feedbacks) {
             <div class="rating">
                 ${generateStarRating(roundedRating)}
             </div>
-            <div class="text">"${fb.descr}"</div>
+            <div class="text epilogue">"${fb.descr}"</div>
             <div class="user">${fb.name}</div>
         `;
         wrapper.appendChild(slide);
