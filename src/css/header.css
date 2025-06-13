@@ -2,11 +2,10 @@ html {
   scroll-behavior: smooth;
 }
 
-#artists,
-#about-us,
-#reviews {
-  scroll-margin-top: 60px;
+body {
+  scroll-padding-top: 64px;
 }
+
 .no-scroll {
   overflow: hidden;
   height: 100vh;
@@ -14,27 +13,22 @@ html {
 .container-header {
   display: flex;
   align-items: center;
+  height: 64px;
   justify-content: space-between;
   width: 100%;
   padding: 6px 12px 6px 20px;
-  gap: 121px;
 }
 
-.logo-icon {
+.header-logo-icon {
   fill: #ffffff;
 }
 .logo-link {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: auto;
-  padding: 9px 12px;
+  width: 119px;
+  height: 52px;
+  padding: 11px 6px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
-.logo-link:hover .logo-icon,
-.logo-link:focus .logo-icon {
+.header-logo-link:hover .header-logo-icon {
   fill: #9747ff;
   transform: scale(1.1);
 }
@@ -44,9 +38,6 @@ html {
   padding: 12px;
   background: none;
   border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 .burger-btn svg {
@@ -59,14 +50,15 @@ html {
   transform: scale(1.1);
   opacity: 1;
 }
-.header-list {
+.header-list-nav {
   display: none;
 }
-.header-list li a:hover,
-.header-list li a:focus {
-  color: #9747ff;
-  transform: scale(1.05);
-}
+  .header-link:focus,
+  .header-link:hover {
+    color: #9747ff;
+    transform: scale(1.05);
+  }
+
 .mobile-menu {
   position: fixed;
   inset: 0;
@@ -88,24 +80,22 @@ html {
   display: flex;
   flex-direction: column;
   position: relative;
+  gap: 39px;
 }
-.mobile-nav-links {
+.mobile-nav-list {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  margin-top: 39px;
   align-items: center;
 }
-.mobile-nav-links a {
-  text-decoration: none;
+.mobile-nav-link {
   color: #ffffff;
   font-size: 26px;
   font-weight: 500;
-  text-align: left;
   transition: color 0.3s ease;
 }
-.mobile-nav-links a:hover,
-.mobile-nav-links a:active {
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
   color: #9747ff;
 }
 .modal-nav {
@@ -113,12 +103,9 @@ html {
   align-items: center;
   justify-content: space-between;
   padding: 0px 12px 0px 20px;
-  gap: 121px;
-  margin: 0 auto 60px auto;
+  width:100%;
 }
-.logo-link {
-  flex: 1;
-}
+
 .modal-close {
   fill: white;
   transition: transform 0.2s ease, opacity 0.2s ease;
@@ -129,9 +116,9 @@ html {
   padding: 12px;
   background-color: #060307;
   border: 0;
-  display: flex;
+/*   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 .close-menu-btn:hover svg,
 .close-menu-btn:focus svg {
@@ -147,35 +134,23 @@ html {
   z-index: 1000;
   background-color: #060307;
 }
-@media screen and (min-width: 768px) and (max-width: 1439px) {
+@media screen and (min-width: 768px) {
   .burger-btn {
     display: none;
   }
-  .header-list {
-    display: flex;
-    gap: 20px;
-  }
-  .logo-icon {
-    fill: white;
-  }
-  .container-header {
-    padding: 11px 64px;
-    gap: 262px;
-  }
-}
-@media screen and (min-width: 1440px) {
-  .burger-btn {
-    display: none;
+  .header-list-nav {
+    display: block;
   }
   .header-list {
     display: flex;
-    gap: 20px;
-  }
-  .logo-icon {
-    fill: white;
+    gap: 32px;
   }
   .container-header {
     padding: 11px 64px;
-    gap: 935px;
   }
+  
+  .header-logo-link:focus .header-logo-icon {
+    fill: #9747ff;
+    transform: scale(1.1);
+  }  
 }
