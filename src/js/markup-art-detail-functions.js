@@ -1,5 +1,5 @@
 import { refs } from './refer.js';
-import icon from '/img/icons.svg';
+import icon from './img/icons.svg';
 
 export function createArtistCard(artist) {
   const markup = artistCardMarkup(artist);
