@@ -1,173 +1,174 @@
-.hero > .container {
+/* .hero > .container {
     padding-top: 0;
-    padding-bottom: 0;
-}
+   
+} */
 
 .hero {
-    padding-top: 64px;
-    position: relative;
-    background-color: #23132B;
-    overflow: hidden;
+  padding-top: 64px;
+  position: relative;
+  background-color: #23132b;
+  overflow: hidden;
+  padding-bottom: 0;
 }
 
 .hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: linear-gradient(to bottom,
-                rgba(0, 0, 0, 0.85) 0%,
-                rgba(0, 0, 0, 0.7) 7%,
-                transparent 12%,
-                transparent 88%,
-                rgba(0, 0, 0, 0.7) 93%,
-                rgba(0, 0, 0, 0.85) 100%);
-    z-index: 2;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.7) 7%,
+    transparent 12%,
+    transparent 88%,
+    rgba(0, 0, 0, 0.7) 93%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+  z-index: 2;
 }
 
 .hero-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
 }
 
 .hero-text {
-    width: 100%;
-    padding-top: 64px;
-    padding-bottom: 64px;
+  width: 100%;
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 
 .hero-title {
-    font-size: 48px;
-    line-height: 1.1;
-    margin-bottom: 20px;
+  font-size: 48px;
+  line-height: 1.1;
+  margin-bottom: 20px;
 }
 
 .hero-description {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 .hero-nav-btn {
-    box-sizing: border-box;
-    border-radius: 12px;
-    padding: 10px 61px;
-    width: 280px;
-    height: 47px;
-    box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05), inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15), inset 0 2px 1px 0 rgba(255, 255, 255, 0.25), inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
-    background: #764191;
+  box-sizing: border-box;
+  border-radius: 12px;
+  padding: 10px 61px;
+  width: 280px;
+  height: 47px;
+  box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+  background: #764191;
 
-    font-weight: 500;
+  font-weight: 500;
 
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
 
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-nav-btn:hover,
 .hero-nav-btn:focus {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 .hero-btn-svg {
-    fill: #fff;
+  fill: #fff;
 }
 
 .hero-pictures {
-    min-width: 280px;
-    width: 100%;
-    height: 385px;
-    background-image: url('/img/hero/hero-mob-min.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  min-width: 280px;
+  width: 100%;
+  height: 385px;
+  background-image: url('/img/hero/hero-mob-min.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-    position: relative;
-    z-index: 0;
+  position: relative;
+  z-index: 0;
 }
-@media (-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
-    .hero-pictures {
-        background-image: url('/img/hero/hero-mob@2x-min.png'); }
-    }
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero-pictures {
+    background-image: url('/img/hero/hero-mob@2x-min.png');
+  }
+}
 
 /*-----TABLET-------*/
 @media only screen and (min-width: 768px) {
+  .hero-text {
+    width: 704px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
 
-    .hero-text {
-        width: 704px;
-        padding-top: 32px;
-        padding-bottom: 32px;
-    }
+  .hero-title {
+    max-width: 520px;
+    margin-bottom: 24px;
+  }
 
-    .hero-title {
-        max-width: 520px;
-        margin-bottom: 24px;
-    }
+  .hero-description {
+    max-width: 624px;
+    font-size: 20px;
+    margin-bottom: 32px;
+  }
 
-    .hero-description {
-        max-width: 624px;
-        font-size: 20px;
-        margin-bottom: 32px;
-    }
+  .hero-nav-btn {
+    max-width: 246px;
+    padding: 10px 44px;
+  }
 
-    .hero-nav-btn {
-        max-width: 246px;
-        padding: 10px 44px;
-    }
+  .hero-pictures {
+    width: 704px;
+    height: 632px;
+    background-image: url('/img/hero/hero-tab-min.png');
+  }
 
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .hero-pictures {
-        width: 704px;
-        height: 632px;
-        background-image: url('/img/hero/hero-tab-min.png');
+      background-image: url('/img/hero/hero-tab@2x-min.png');
     }
-
-    @media (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi) {
-        .hero-pictures {
-            background-image: url('/img/hero/hero-tab@2x-min.png');
-        }
-    }
+  }
 }
-
 
 /*-----DESKTOP-------*/
 @media only screen and (min-width: 1440px) {
+  .hero-text {
+    padding-top: 215px;
+    padding-bottom: 215px;
+    width: 671px;
+    padding-right: 31px;
+  }
 
-    .hero-text {
-        padding-top: 215px;
-        padding-bottom: 215px;
-        width: 671px;
-        padding-right: 31px;
-    }
+  .hero-title {
+    font-size: 84px;
+    max-width: 640px;
+  }
 
-    .hero-title {
-        font-size: 84px;
-        max-width: 640px;
-    }
+  .hero-nav-btn {
+    width: 206px;
+    padding: 10px 24px;
+  }
 
-    .hero-nav-btn {
-        width: 206px;
-        padding: 10px 24px;
-    }
+  .hero-pictures {
+    width: 641px;
+    min-height: 900px;
+    height: 100%;
+    background-image: url('/img/hero/hero-desk-min.png');
+  }
 
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .hero-pictures {
-        width: 641px;
-        min-height: 900px;
-        height: 100%;
-        background-image: url('/img/hero/hero-desk-min.png');
+      background-image: url('/img/hero/hero-desk@2x-min.png');
     }
-    
-    @media (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi) {
-        .hero-pictures {
-            background-image: url('/img/hero/hero-desk@2x-min.png');
-        }
-    }
+  }
 }
