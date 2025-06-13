@@ -6,7 +6,7 @@ import { openArtistModal } from './artist-detail-modal';
 import { showAlert } from './info-message.js';
 
 let currentPage = 1;
-const limit = 1;
+const limit = 8;
 let totalPages;
 
 loadArtistsList();
