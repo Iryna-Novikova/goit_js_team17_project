@@ -8,7 +8,12 @@
   align-items: center;
   position: relative;
 }
-svg {
+/* svg {
+  fill: #fff;
+  width: 24px;
+  height: 24px;
+} */
+.more-btn-icon {
   fill: #fff;
   width: 24px;
   height: 24px;
