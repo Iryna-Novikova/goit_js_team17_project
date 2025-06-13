@@ -3,14 +3,8 @@
     padding-bottom: 0;
 }
 
-/* .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6),
-            #23132B 20%,
-            #23132B 80%,
-            rgba(0, 0, 0, 0.6));
-    background-color: #23132B;
-} */
 .hero {
+    padding-top: 64px;
     position: relative;
     background-color: #23132B;
     overflow: hidden;
@@ -24,13 +18,13 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.85) 0%,
-        transparent 5%,
-        transparent 95%,
-        rgba(0, 0, 0, 0.85) 100%
-        );
+    background: linear-gradient(to bottom,
+                rgba(0, 0, 0, 0.85) 0%,
+                rgba(0, 0, 0, 0.7) 7%,
+                transparent 12%,
+                transparent 88%,
+                rgba(0, 0, 0, 0.7) 93%,
+                rgba(0, 0, 0, 0.85) 100%);
     z-index: 2;
 }
 
