@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.feedbackModal = new FeedbackModal();
 });
 
-const stars = document.querySelectorAll(".stars i")
+const stars = document.querySelectorAll(".form-str i")
 
 stars.forEach((star, index1) => {
   star.addEventListener("click", () => {

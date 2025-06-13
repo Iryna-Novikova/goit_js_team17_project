@@ -126,20 +126,20 @@ button {
     display: block;
 }
 
-.stars {
+.form-str {
     gap: 8px;
     margin-bottom: 32px;
     justify-content: center;
 }
 
-.stars i {
+.form-str i {
     color: #fff;
     font-size: 31px;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
-.stars i.active {
+.form-str i.active {
     color: #764191;
 }
 
