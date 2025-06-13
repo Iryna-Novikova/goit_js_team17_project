@@ -1,4 +1,5 @@
 import { refs } from './refer.js';
+import icon from '/img/icons.svg';
 
 export function createArtistCard(artist) {
   const markup = artistCardMarkup(artist);
@@ -105,7 +106,7 @@ function createTrackListMarkup({
       <p class="track-time">${trackTime}</p>
       <a class="track-movie${movieHidden}" href="${movieSrc}" target="_blank" rel="noopener noreferrer">
         <svg class="modal-youtube-icon" width="24px" height="24px">
-          <use href="/img/icons.svg#icon-youtube"></use>
+          <use href="${icon}#icon-youtube"></use>
         </svg>
       </a>
     </li>`;
