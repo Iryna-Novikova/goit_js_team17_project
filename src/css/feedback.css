@@ -1,0 +1,329 @@
+/*  */
+
+.feedback-section {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+/* svg {
+  fill: #fff;
+  width: 24px;
+  height: 24px;
+} */
+.more-btn-icon {
+  fill: #fff;
+  width: 24px;
+  height: 24px;
+}
+.swiper-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  flex-grow: 1;
+  min-height: 200px;
+  margin-bottom: 16px;
+}
+.swiper-slide {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  min-height: 180px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+.swiper-slide .text {
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  text-align: center;
+  margin-bottom: 32px;
+  font-style: normal;
+  color: #fff;
+  max-width: 90%;
+  display: inline-block;
+}
+.swiper-slide .user {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+}
+.rating {
+  margin-bottom: 32px !important;
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+}
+.rating .star,
+.rating .star-empty {
+  font-size: 18px;
+}
+.star {
+  color: #764191;
+}
+.star-empty {
+  color: #ffffff;
+}
+.swiper-buttons {
+  position: absolute;
+  top: 48px;
+  width: 100%;
+  left: 0;
+  right: 0;
+  padding: 0 16px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 20;
+}
+.swiper-buttons .disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+/* ПРИХОВУЄМО КНОПКИ ЗА ЗАМОВЧУВАННЯМ (ДЛЯ МОБІЛЬНИХ) */
+.swiper-buttons button {
+  display: none;
+  background-color: #060307;
+  color: #fff;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+  pointer-events: auto;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.swiper-buttons button img {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+.swiper-buttons button:hover {
+  background: rgba(6, 3, 7, 0.8);
+  border-color: #fff;
+}
+.pagination {
+  gap: 9px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+.pagination span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  display: inline-block;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.pagination .active {
+  background: #fff;
+}
+.loading-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: #fff;
+}
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+/* Button Leav Feedbacks */
+/* .leave-feedbacks {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+  border-radius: 12px;
+  padding: 10px 0;
+  width: 288px;
+  height: 47px;
+  box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+  background: #764191;
+  transition: background-color cubic-bezier(0.445, 0.05, 0.55, 3);
+  border: transparent;
+  text-align: center;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.leave-feedbacks:hover {
+  box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+  background: #764191;
+  opacity: 0.6;
+} */
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*
+* ----------------------------------------------------
+* СТИЛІ ДЛЯ ПЛАНШЕТІВ (min-width: 768px)
+* ----------------------------------------------------
+*/
+@media screen and (min-width: 768px) {
+  .feedback-section {
+    gap: 16px;
+    min-height: 300px;
+  }
+  .swiper-container {
+    min-height: 254px;
+  }
+  .swiper-slide {
+    min-height: 200px;
+  }
+  .swiper-slide .text {
+    font-size: 20px;
+    max-width: 440px;
+    display: inline-block;
+  }
+  .swiper-slide .user {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  .rating {
+    margin-bottom: 20px;
+    gap: 4px;
+  }
+  .rating .star,
+  .rating .star-empty {
+    font-size: 19px;
+  }
+  .swiper-buttons {
+    top: 59px;
+    padding: 0 44px;
+  }
+  .swiper-buttons button {
+    display: flex;
+    width: 48px !important;
+    height: 48px !important;
+    background-color: #060307;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    transition: background-color 0.3s, opacity 0.3s;
+    z-index: 10;
+  }
+  .swiper-buttons button img {
+    width: 20px;
+    height: 20px;
+  }
+  .pagination {
+    gap: 10px;
+  }
+  .pagination span {
+    width: 8px;
+    height: 8px;
+    bottom: 91px;
+    position: relative;
+  }
+  .loader {
+    width: 44px;
+    height: 44px;
+    border: 4px solid #fff;
+  }
+  /* Button Leav Feedbacks */
+  /* .leave-feedbacks {
+    width: 158px;
+  } */
+}
+
+/*
+* ----------------------------------------------------
+* СТИЛІ ДЛЯ ДЕСКТОПІВ (min-width: 1440px)
+* ----------------------------------------------------
+*/
+@media screen and (min-width: 1440px) {
+  .feedback-section {
+    min-height: 397.89px;
+    gap: 16px;
+  }
+  .swiper-container {
+    min-height: 250px;
+  }
+  .swiper-slide {
+    min-height: 200px;
+  }
+  .swiper-slide .text {
+    font-size: 24px;
+    line-height: 1.5;
+    margin-top: 20px;
+    margin-bottom: 32px;
+    max-width: 770px;
+    display: inline-block;
+  }
+  .swiper-slide .user {
+    font-size: 18px;
+    margin-bottom: 72px;
+  }
+  .rating {
+    margin-bottom: 20px;
+    gap: 5px;
+  }
+  .rating .star,
+  .rating .star-empty {
+    font-size: 20px;
+  }
+  .swiper-buttons {
+    top: 60px;
+    padding: 0 48px;
+  }
+  .swiper-buttons button {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+  .swiper-buttons button img {
+    width: 24px;
+    height: 24px;
+  }
+  .pagination {
+    gap: 10px;
+    position: relative;
+  }
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #fff;
+  }
+  /* Button Leav Feedbacks */
+  /* .leave-feedbacks {
+    width: 177px;
+  } */
+}
