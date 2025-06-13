@@ -40,7 +40,7 @@ function onEscPress(e) {
  */
 function onBackdropClick(e) {
   if (e.target === refs.artistsModalBackdrop) {
-    // Пустий блок, можливо, для майбутньої логіки
+    closeArtistModal();
   }
 }
 

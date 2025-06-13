@@ -26,10 +26,13 @@
 /* Модальне вікно */
 .artist-modal-content-wrapper {
   overflow-y: auto;
+  overflow-x: hidden;
   max-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  scrollbar-width: thin;
+  scrollbar-color: #555555 #333333;
   flex-direction: column;
   gap: 16px;
   border-radius: 16px;
