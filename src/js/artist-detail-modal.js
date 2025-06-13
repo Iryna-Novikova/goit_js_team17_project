@@ -41,7 +41,6 @@ function onEscPress(e) {
 function onBackdropClick(e) {
   if (e.target === refs.artistsModalBackdrop) {
     closeArtistModal();
-    const genresList = genres.join(', ');
     // закриття модального вікна при кліку на бекдроп
   }
 }
