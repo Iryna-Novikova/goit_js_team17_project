@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/goit_js_team17_project/cd ",
+    "build": "vite build --base=/goit_js_team17_project/cd",
     "preview": "vite preview"
   },
   "devDependencies": {
