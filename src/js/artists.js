@@ -3,9 +3,10 @@ import { createArtistsList } from './markup-artists-functions.js';
 import { showLoadMoreBtn, hideLoadMoreBtn,  showLoaderArtists,  hideLoaderArtists } from './show-hide-functions.js';
 import { getArtists } from './artists-api.js';
 import { openArtistModal } from './artist-detail-modal';
+import { showAlert } from './info-message.js';
 
 let currentPage = 1;
-const limit = 8;
+const limit = 1;
 let totalPages;
 
 loadArtistsList();
@@ -44,7 +45,8 @@ refs.artistsListElm.addEventListener('click', e => {
   }
   const artistId = learnMoreBtn.dataset.id;
   if (!artistId) {
-    console.warn('Не знайдено data-id на кнопці "Learn More"');
+    const message = 'Не знайдено data-id на кнопці "Learn More"'; 
+    showAlert(message);
     return;
   }
   openArtistModal(artistId);
