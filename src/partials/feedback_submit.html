@@ -1,5 +1,33 @@
 <div class="backdrop visually-hidden" data-feedback-form>
-  <form>
-    <!-- ваш код тут -->
+  <form class="form-main container" id="feedback-form" autocomplete="off">
+    <button class="form-main-btn" id="close-feedback-btn">
+      <svg class="form-svg-btn" width="32" height="32">
+        <use href="/img/icons.svg#icon-close-burger-menu"></use>
+      </svg>
+      </svg>
+    </button>
+    <h4 class="form-par epilogue">
+      Submit feedback
+    </h4>
+    <label class="lab-name">
+      Name
+      <input type="text" class="form-name" name="user-name" id="user-name" placeholder="Name" required>
+    </label>
+    <label class="lab-text">
+      Message
+      <textarea class="form-text" name="user-comment" id="user-comment" placeholder="Type your message..." rows="8"
+        required></textarea>
+      <p class="text-inva">Text error</p>
+    </label>
+    <div class="form-str" id="rating-container">
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+    </div>
+    <button class="form-end-button" id="submit-btn" type="submit">Submit</button>
   </form>
 </div>
+
+<script src="/src/js/feedback-form.js"></script>
