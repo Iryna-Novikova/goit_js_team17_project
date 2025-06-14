@@ -257,6 +257,7 @@ stars.forEach((star, index1) => {
   })
 })
 
+
 export function showAlert(message, pos = 'topRight') {
     iziToast.show({
         title: '',
