@@ -161,11 +161,5 @@ function updatePagination() {
 
 document.addEventListener('DOMContentLoaded', fetchFeedbacks);
 
-document.addEventListener('DOMContentLoaded', () => {
-  fetchFeedbacks();
-
-  const leaveFeedbackBtn = document.getElementById('leave-feedbacks');
-  if (leaveFeedbackBtn) {
-    leaveFeedbackBtn.addEventListener('click', openFeedbackModal);
-  }
-});
+const leaveFeedbackBtn = document.getElementById('leave-feedbacks');
+leaveFeedbackBtn.addEventListener('click', openFeedbackModal);
