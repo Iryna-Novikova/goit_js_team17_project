@@ -216,7 +216,7 @@ class FeedbackModal {
       this.closeModal();
       this.showSuccessMessage('Відгук успішно відправлено!');
     } finally {
-      this.setSubmitButtonState(false, 'Відправити');
+      this.setSubmitButtonState(false, 'Submit');
     }
   }
 
