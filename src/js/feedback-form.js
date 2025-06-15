@@ -209,7 +209,7 @@ class FeedbackModal {
       await this.submitForm();
     } catch (error) {
       // console.error('Error sending feedback:', error);
-      this.showErrorMessage(`Error sending feedback. ${error}.  Try again.');
+      this.showErrorMessage(`Error sending feedback. ${error}.  Try again.`);
     }
   }
 
