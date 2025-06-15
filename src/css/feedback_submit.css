@@ -98,13 +98,14 @@
     outline: transparent;
 }
 
-.text-inva {
-/*     font-size: 18px; */
+/* .text-inva {
+    font-size: 18px;
     padding-left: 16px;
     margin-top: 1px;
     display: none;
     position: absolute;
 }
+ */
 
 .form-text:not(:placeholder-shown):invalid {
     border-color: #af0404;
