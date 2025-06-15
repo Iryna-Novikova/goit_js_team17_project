@@ -9,6 +9,7 @@ import axios from 'axios';
 // import 'css-star-rating/css/star-rating.min.css';
 import {hideLoaderFeedback, showLoaderFeedback} from './show-hide-functions.js'
 import { showAlert } from './info-message.js';
+import { openFeedbackModal } from './feedback-form.js';
 
 const wrapper = document.getElementById('feedback-wrapper');
 const paginationContainer = document.getElementById('pagination');
@@ -159,3 +160,12 @@ function updatePagination() {
 }
 
 document.addEventListener('DOMContentLoaded', fetchFeedbacks);
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetchFeedbacks();
+
+  const leaveFeedbackBtn = document.getElementById('leave-feedbacks');
+  if (leaveFeedbackBtn) {
+    leaveFeedbackBtn.addEventListener('click', openFeedbackModal);
+  }
+});

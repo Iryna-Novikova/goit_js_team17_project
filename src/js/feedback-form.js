@@ -1,3 +1,7 @@
+import { showAlert } from './info-message.js';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import { postFeedback } from './artists-api.js';
+
 class FeedbackModal {
   constructor() {
     this.formData = {
@@ -22,53 +26,55 @@ class FeedbackModal {
   }
 
   bindElements() {
-    this.openBtn = document.getElementById('openModalBtn');
-    this.modal = document.getElementById('feedbackModal');
-    this.form = document.getElementById('feedbackForm');
-    this.closeBtn = document.getElementById('closeModalBtn');
-
+    this.modal = document.querySelector('[data-feedback-form]');
+    this.form = document.getElementById('feedback-form');
+    this.closeBtn = document.getElementById('close-feedback-btn');
     this.nameInput = document.getElementById('user-name');
     this.messageInput = document.getElementById('user-comment');
     this.ratingContainer = document.getElementById('rating-container');
-    this.submitBtn = document.getElementById('submitBtn');
-
-    this.stars = this.ratingContainer?.querySelectorAll('.star') || [];
-
+    this.submitBtn = document.getElementById('submit-btn');
+    this.stars = this.ratingContainer?.querySelectorAll('i.fa-star') || [];
     this.errors = {
       name: document.getElementById('name-error'),
-      message: document.getElementById('message-error')
+      message: this.form?.querySelector('.text-inva'),
+      rating: this.form?.querySelector('.rating-error')
     };
   }
 
   bindEvents() {
-    this.openBtn?.addEventListener('click', () => this.openModal());
     this.closeBtn?.addEventListener('click', () => this.closeModal());
     this.modal?.addEventListener('click', (e) => this.handleBackdropClick(e));
     document.addEventListener('keydown', (e) => this.handleEscapeKey(e));
 
     this.form?.addEventListener('input', (e) => this.handleInputChange(e));
     this.form?.addEventListener('submit', (e) => this.handleSubmit(e));
+
     this.stars.forEach((star, index) => {
       star.addEventListener('click', () => this.setRating(index + 1));
-      star.addEventListener('mouseenter', () => this.handleStarHover(index + 1));
+      star.addEventListener('mouseenter', () => this.updateStarsDisplay(index + 1, true));
       star.addEventListener('mouseleave', () => this.updateStarsDisplay(this.formData.rating));
     });
   }
 
   openModal() {
-    if (!this.modal) return;
-    this.modal.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-    setTimeout(() => {
-      this.nameInput?.focus();
-    }, 100);
-  }
+  if (!this.modal) return;
+  this.modal.classList.remove('visually-hidden');
+  this.modal.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => {
+    this.nameInput?.focus();
+  }, 100);
+}
+
 
   closeModal() {
-    if (!this.modal) return;
-    this.modal.classList.remove('is-open');
-    document.body.style.overflow = '';
-  }
+  if (!this.modal) return;
+  this.modal.classList.remove('is-open');
+  this.modal.classList.add('visually-hidden');
+  document.body.style.overflow = '';
+  this.clearSavedData();
+}
+
 
   handleBackdropClick(event) {
     if (event.target === this.modal) {
@@ -99,10 +105,6 @@ class FeedbackModal {
     this.saveData();
   }
 
-  handleStarHover(rating) {
-    this.updateStarsDisplay(rating, true);
-  }
-
   updateStarsDisplay(rating, isHover = false) {
     this.stars.forEach((star, index) => {
       star.classList.toggle('active', index < rating);
@@ -118,6 +120,7 @@ class FeedbackModal {
     if (rating >= 1 && rating <= 5) {
       this.formData.rating = rating;
       this.updateStarsDisplay(rating);
+      this.validateField('rating');
       this.saveData();
     }
   }
@@ -128,7 +131,9 @@ class FeedbackModal {
 
     let isValid = true;
     const value = this.formData[fieldName];
-    const input = fieldName === 'name' ? this.nameInput : this.messageInput;
+    let input = null;
+    if (fieldName === 'name') input = this.nameInput;
+    if (fieldName === 'message') input = this.messageInput;
     const errorElement = this.errors[fieldName];
 
     if (!value || value.length < rules.min || value.length > rules.max) {
@@ -138,6 +143,18 @@ class FeedbackModal {
     } else {
       input?.classList.remove('error');
       if (errorElement) errorElement.style.display = 'none';
+    }
+
+    if (fieldName === 'rating') {
+      const container = this.ratingContainer;
+      if (!value || value < rules.min || value > rules.max) {
+        container?.classList.add('error');
+        if (errorElement) errorElement.style.display = 'block';
+        isValid = false;
+      } else {
+        container?.classList.remove('error');
+        if (errorElement) errorElement.style.display = 'none';
+      }
     }
 
     return isValid;
@@ -165,10 +182,9 @@ class FeedbackModal {
 
   async handleSubmit(event) {
     event.preventDefault();
-
     this.updateFormDataFromInputs();
-
     const errors = this.validateForm();
+
     if (errors.length > 0) {
       this.showErrorMessage(errors.join('\n'));
       return;
@@ -189,26 +205,19 @@ class FeedbackModal {
 
   async submitForm() {
     this.setSubmitButtonState(true, 'Відправляється...');
-
     try {
-      await this.sendFeedback();
-
+      await postFeedback({
+        name: this.formData.name,
+        rating: this.formData.rating,
+        descr: this.formData.message
+      });
       this.clearForm();
       this.clearSavedData();
       this.closeModal();
-
       this.showSuccessMessage('Відгук успішно відправлено!');
     } finally {
       this.setSubmitButtonState(false, 'Відправити');
     }
-  }
-
-  async sendFeedback() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({ success: true });
-      }, 1000);
-    });
   }
 
   setSubmitButtonState(disabled, text) {
@@ -228,44 +237,57 @@ class FeedbackModal {
   clearErrorStates() {
     this.nameInput?.classList.remove('error');
     this.messageInput?.classList.remove('error');
-
-    Object.values(this.errors).forEach(errorElement => {
-      if (errorElement) errorElement.style.display = 'none';
-    });
+    this.ratingContainer?.classList.remove('error');
+    Object.values(this.errors).forEach(e => e && (e.style.display = 'none'));
   }
-    
+
   showErrorMessage(message) {
-    alert(message);
+    showAlert(message, 'topRight');
   }
 
   showSuccessMessage(message) {
-    alert(message);
+    showAlert(message, 'topRight');
+  }
+
+  saveData() {
+    if (
+      this.formData.name === '' &&
+      this.formData.message === '' &&
+      this.formData.rating === null
+    ) return;
+    localStorage.setItem('feedbackData', JSON.stringify(this.formData));
+  }
+
+  clearSavedData() {
+    localStorage.removeItem('feedbackData');
+  }
+
+  loadSavedData() {
+    const saved = localStorage.getItem('feedbackData');
+    if (!saved) return;
+    try {
+      this.formData = JSON.parse(saved);
+      this.nameInput.value = this.formData.name || '';
+      this.messageInput.value = this.formData.message || '';
+      this.updateStarsDisplay(this.formData.rating || 0);
+    } catch (e) {
+      console.warn('Помилка при завантаженні локальних даних:', e);
+    }
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  window.feedbackModal = new FeedbackModal();
-});
+export const feedbackModalInstance = new FeedbackModal();
+export function openFeedbackModal() {
+  feedbackModalInstance.openModal();
+}
 
-const stars = document.querySelectorAll(".form-str i")
-
+const stars = document.querySelectorAll(".form-str i");
 stars.forEach((star, index1) => {
   star.addEventListener("click", () => {
     stars.forEach((star, index2) => {
-      index1 >= index2 ? star.classList.add("active") : star.classList.remove("active");
-    })
-  })
-})
-
-
-export function showAlert(message, pos = 'topRight') {
-    iziToast.show({
-        title: '',
-        message: message,
-        backgroundColor: 'rgb(118, 65, 145)',
-        messageColor: 'rgb(255, 255, 255)',
-        position: pos,
+      index1 >= index2
+        ? star.classList.add("active")
+        : star.classList.remove("active");
     });
-}
-import { showAlert } from './info-message.js';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+  });
+});

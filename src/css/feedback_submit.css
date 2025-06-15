@@ -1,4 +1,4 @@
-.backdrop {
+.backdrop-form {
     position: fixed;
     top: 0;
     left: 0;
@@ -9,6 +9,17 @@
     justify-content: center;
     align-items: center;
     z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop-form.is-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .form-main {
