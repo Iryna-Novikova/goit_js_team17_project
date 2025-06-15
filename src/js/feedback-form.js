@@ -56,9 +56,23 @@ class FeedbackModal {
     });
   }
 
+   removeListeners() {
+    this.closeBtn?.removeEventListener('click', () => this.closeModal());
+    this.modal?.removeEventListener('click', (e) => this.handleBackdropClick(e));
+    document.removeEventListener('keydown', (e) => this.handleEscapeKey(e));
+
+    this.form?.removeEventListener('input', (e) => this.handleInputChange(e));
+    this.form?.removeEventListener('submit', (e) => this.handleSubmit(e));
+
+    this.stars.forEach((star, index) => {
+      star.removeEventListener('click', () => this.setRating(index + 1));
+      star.removeEventListener('mouseenter', () => this.updateStarsDisplay(index + 1, true));
+      star.removeEventListener('mouseleave', () => this.updateStarsDisplay(this.formData.rating));
+    });
+  }
+  
   openModal() {
-  if (!this.modal) return;
-  this.modal.classList.remove('visually-hidden');
+  if (!this.modal) return
   this.modal.classList.add('is-open');
   document.body.style.overflow = 'hidden';
   setTimeout(() => {
@@ -70,8 +84,9 @@ class FeedbackModal {
   closeModal() {
   if (!this.modal) return;
   this.modal.classList.remove('is-open');
-  this.modal.classList.add('visually-hidden');
+  // this.modal.classList.add('visually-hidden');
   document.body.style.overflow = '';
+  this.removeListeners();
   this.clearSavedData();
 }
 
@@ -166,15 +181,15 @@ class FeedbackModal {
     const rules = this.validationRules;
 
     if (!name || name.length < rules.name.min || name.length > rules.name.max) {
-      errors.push(`Ім'я повинно містити від ${rules.name.min} до ${rules.name.max} символів`);
+      errors.push(`The name must be between ${rules.name.min} and ${rules.name.max} characters long.`);
     }
 
     if (!message || message.length < rules.message.min || message.length > rules.message.max) {
-      errors.push(`Повідомлення повинно містити від ${rules.message.min} до ${rules.message.max} символів`);
+      errors.push(`The message must be between ${rules.message.min} and ${rules.message.max} characters long.`);
     }
 
     if (!rating || rating < rules.rating.min || rating > rules.rating.max) {
-      errors.push(`Будь ласка, оберіть рейтинг від ${rules.rating.min} до ${rules.rating.max} зірок`);
+      errors.push(`Please select a rating from ${rules.rating.min} to ${rules.rating.max} stars.`);
     }
 
     return errors;
@@ -193,8 +208,8 @@ class FeedbackModal {
     try {
       await this.submitForm();
     } catch (error) {
-      console.error('Error sending feedback:', error);
-      this.showErrorMessage('Помилка при відправці відгуку. Спробуйте ще раз.');
+      // console.error('Error sending feedback:', error);
+      this.showErrorMessage(`Error sending feedback. ${error}.  Try again.');
     }
   }
 
@@ -204,7 +219,7 @@ class FeedbackModal {
   }
 
   async submitForm() {
-    this.setSubmitButtonState(true, 'Відправляється...');
+    this.setSubmitButtonState(true, 'Feedback is sending...');
     try {
       await postFeedback({
         name: this.formData.name,
@@ -214,7 +229,7 @@ class FeedbackModal {
       this.clearForm();
       this.clearSavedData();
       this.closeModal();
-      this.showSuccessMessage('Відгук успішно відправлено!');
+      this.showSuccessMessage('Feadback was sent successfully!');
     } finally {
       this.setSubmitButtonState(false, 'Submit');
     }
@@ -271,7 +286,7 @@ class FeedbackModal {
       this.messageInput.value = this.formData.message || '';
       this.updateStarsDisplay(this.formData.rating || 0);
     } catch (e) {
-      console.warn('Помилка при завантаженні локальних даних:', e);
+      console.warn('Error loading saved data:', e);
     }
   }
 }
