@@ -21,7 +21,8 @@
 
 ## Учасники проекту:
 
--TEAM LEAD: Ірина Новікова -SCRUM MASTER: Наталія Заремба
+-TEAM LEAD: Ірина Новікова 
+-SCRUM MASTER: Наталія Заремба
 
 -Web developers:
 
